@@ -32,6 +32,50 @@ mocha test
 
 ## Debugging
 
+For interactive debugging in VSCode, add the following to .vscode/launch.json:
+
+```
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "npm run debug:start",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run-script",
+        "debug:start"
+      ],
+      "port": 9229,
+      "outputCapture": "std"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "npm run debug:test",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run-script",
+        "debug:test"
+      ],
+      "port": 9229,
+      "outputCapture": "std"
+    }
+  ]
+}
+```
+
+Set some breakpoints in your code (handlers or tests files), then
+
+1. Click the Run button
+2. Select the run configuration from the drop down menu (debug:start or debug:test)
+3. Click the play button next to the drop down menu
+4. The debugger should then run the code and stop at your first breakpoint
+
 ## Credits
 
 I found the following resources helpfull while building this repo:
