@@ -5,7 +5,7 @@
 - [x] Create project documentation outline
 - [x] Create serverless.yml for hello world function
 - [x] Configure code linting
-- [ ] Configure test environment
+- [x] Configure test environment
 - [ ] Configure git hooks
 - [ ] Configure code coverage
 - [ ] Configure local interactive debugging
