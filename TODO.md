@@ -3,7 +3,7 @@
 - [x] Create TODO list
 - [x] Create project stucture
 - [x] Create project documentation outline
-- [ ] Create serverless.yml for hello world function
+- [x] Create serverless.yml for hello world function
 - [ ] Configure code linting
 - [ ] Configure test environment
 - [ ] Configure git hooks
