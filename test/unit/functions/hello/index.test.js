@@ -4,7 +4,7 @@
 
 const expect = require('chai').expect;
 
-const handler = require('../../../lib/functions/hello');
+const handler = require('../../../../lib/functions/hello');
 
 describe('hello', () => {
   it('should return a response', async () => {
