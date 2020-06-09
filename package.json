@@ -8,6 +8,7 @@
     "test": "test"
   },
   "dependencies": {
+    "serverless": "^1.72.0",
     "serverless-pseudo-parameters": "^2.5.0"
   },
   "devDependencies": {
