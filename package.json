@@ -33,7 +33,7 @@
   "config": {
     "ghooks": {
       "pre-commit": "opt --in pre-commit --exec 'npm run lint'",
-      "pre-push": "opt --in pre-push --exec 'npm run test'"
+      "pre-push": "opt --in pre-push --exec 'npm run coverage'"
     }
   },
   "repository": {
