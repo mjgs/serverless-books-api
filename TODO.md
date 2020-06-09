@@ -6,7 +6,7 @@
 - [x] Create serverless.yml for hello world function
 - [x] Configure code linting
 - [x] Configure test environment
-- [ ] Configure git hooks
+- [x] Configure git hooks
 - [ ] Configure code coverage
 - [ ] Configure local interactive debugging
 
