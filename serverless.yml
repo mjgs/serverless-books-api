@@ -1,0 +1,17 @@
+org: markjgsmith
+app: serverless-books-api
+service: books-service
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  region: us-east-1
+
+functions:
+  hello:
+    handler: lib/functions/hello/index.hello
+    events:
+      - http:
+          method: get
+          path: /hello
