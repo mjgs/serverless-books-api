@@ -7,7 +7,7 @@
 - [x] Configure code linting
 - [x] Configure test environment
 - [x] Configure git hooks
-- [ ] Configure code coverage
+- [x] Configure code coverage
 - [ ] Configure local interactive debugging
 
 2. Write test suite stubs
