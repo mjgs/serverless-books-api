@@ -13,7 +13,7 @@
 2. Write test suite stubs
 
 - [ ] integration
-- [ ] unit
+- [x] unit
 
 3. Write books REST API using TDD
 
