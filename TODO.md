@@ -4,7 +4,7 @@
 - [x] Create project stucture
 - [x] Create project documentation outline
 - [x] Create serverless.yml for hello world function
-- [ ] Configure code linting
+- [x] Configure code linting
 - [ ] Configure test environment
 - [ ] Configure git hooks
 - [ ] Configure code coverage
