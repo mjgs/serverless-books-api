@@ -19,6 +19,7 @@
     "eslint-plugin-standard": "^4.0.1"
   },
   "scripts": {
+    "lint": "eslint --ignore-path .gitignore .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
