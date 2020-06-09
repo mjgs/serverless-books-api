@@ -1,0 +1,34 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "Implements a Books API for a Library, intended to be run on AWS using serverless",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "serverless-pseudo-parameters": "^2.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjgs/serverless-books-api.git"
+  },
+  "keywords": [
+    "serverless",
+    "cloud",
+    "aws",
+    "api",
+    "rest"
+  ],
+  "author": "Mark Smith",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mjgs/serverless-books-api/issues"
+  },
+  "homepage": "https://github.com/mjgs/serverless-books-api#readme"
+}
