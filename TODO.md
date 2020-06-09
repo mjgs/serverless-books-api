@@ -8,7 +8,7 @@
 - [x] Configure test environment
 - [x] Configure git hooks
 - [x] Configure code coverage
-- [ ] Configure local interactive debugging
+- [x] Configure local interactive debugging
 
 2. Write test suite stubs
 
