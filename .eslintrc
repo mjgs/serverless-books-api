@@ -1,0 +1,28 @@
+{
+  "extends": ["standard"],
+  "parserOptions": {
+    "ecmaVersion": 2017
+  },
+  "rules": {
+    // these are only here because I did not
+    // want to update the entire codebase ¯\_(ツ)_/¯
+    "func-names": 0,
+    "no-var": 0,
+    "func-style": 0,
+    "comma-dangle": 0,
+    "valid-jsdoc": 0,
+    "vars-on-top": 0,
+    "complexity": ["error", { "max": 13 }],
+    // Overrides
+    "semi": ["error", "always"],
+    "object-curly-spacing": ["error", "always"],
+    "array-bracket-spacing": ["error", "always", { "objectsInArrays": false }],
+    "brace-style": ["error", "stroustrup"],
+    "prefer-arrow-callback": 0,
+    "prefer-template": 0,
+    "space-before-function-paren": 0,
+    "no-trailing-spaces": ["error", { "skipBlankLines": true }],
+    "no-multi-spaces": ["error", { "ignoreEOLComments": true }],
+    "indent": ["error", 2, { "SwitchCase": 1 }]
+  }
+}
