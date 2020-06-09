@@ -1,7 +1,7 @@
 1. Setup basic environment
 
 - [x] Create TODO list
-- [ ] Create project stucture
+- [x] Create project stucture
 - [ ] Create project documentation outline
 - [ ] Create serverless.yml for hello world function
 - [ ] Configure code linting
