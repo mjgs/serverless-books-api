@@ -19,27 +19,27 @@
 
 - [x] [Create crud add function](https://github.com/mjgs/serverless-books-api/pull/12)
 - [x]   - Create handler
-- [x]   - Create db adapters
+- [x]   - Create db adapter
 - [x]   - Create route config
-- [x]   - Create validation schemas
+- [x]   - Create validation schema
 - [ ] Create crud delete function
 - [ ]   - Create handler
-- [ ]   - Create db adapters
+- [ ]   - Create db adapter
 - [ ]   - Create route config
-- [ ]   - Create validation schemas
+- [ ]   - Create validation schema
 - [ ] Create crud get function
 - [ ]   - Create handler
-- [ ]   - Create db adapters
+- [ ]   - Create db adapter
 - [ ]   - Create route config
 - [ ] Create crud getAll function
 - [ ]   - Create handler
-- [ ]   - Create db adapters
+- [ ]   - Create db adapter
 - [ ]   - Create route config
 - [ ] Create crud update function
 - [ ]   - Create handler
-- [ ]   - Create db adapters
+- [ ]   - Create db adapter
 - [ ]   - Create route config
-- [ ]   - Create validation schemas
+- [ ]   - Create validation schema
 - [ ] Create authorize function
 - [ ]   - add
 - [ ]   - delete
