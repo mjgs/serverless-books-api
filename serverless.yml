@@ -1,12 +1,29 @@
-org: markjgsmith
-app: serverless-books-api
 service: books-service
+
+custom:
+  db:
+    booksTable: ${self:service}-books-${self:provider.stage}
 
 provider:
   name: aws
   runtime: nodejs12.x
   stage: ${opt:stage, 'dev'}
   region: us-east-1
+  environment:
+    BOOKS_TABLE: ${self:custom.db.booksTable}
+    DEBUG: booksapi:*
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        - arn:aws:dynamodb:#{AWS::Region}:#{AWS::AccountId}:table/${self:custom.db.booksTable}
+        - arn:aws:dynamodb:#{AWS::Region}:#{AWS::AccountId}:table/${self:custom.db.booksTable}/index/uuid
 
 functions:
   hello:
@@ -15,6 +32,32 @@ functions:
       - http:
           method: get
           path: /hello
+
+  addBook:
+    handler: lib/functions/books/add.add
+    events:
+      - http:
+          method: post
+          cors: true
+          path: /book/add
+          request:
+            schema:
+              application/json: ${file(lib/schemas/add_book_request.json)}
+
+resources:
+  Resources:
+    booksTable:
+      Type: AWS::DynamoDB::Table
+      DeletionPolicy: Retain
+      Properties:
+        TableName: ${self:custom.db.booksTable}
+        AttributeDefinitions:
+          - AttributeName: uuid
+            AttributeType: S
+        KeySchema:
+          - AttributeName: uuid
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
 
 plugins:
   - serverless-pseudo-parameters
