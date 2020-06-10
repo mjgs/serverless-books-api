@@ -12,7 +12,7 @@
 
 2. Write test suite stubs
 
-- [ ] integration
+- [x] [integration](https://github.com/mjgs/serverless-books-api/pull/20)
 - [x] [unit](https://github.com/mjgs/serverless-books-api/pull/11)
 
 3. Write books REST API using TDD
