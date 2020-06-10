@@ -17,8 +17,7 @@
     },
     "releaseDate": {
       "type": "integer",
-      "title": "Release Date",
-      "minimum": 0
+      "title": "Release Date"
     },
     "authorName": {
       "type": "string",
