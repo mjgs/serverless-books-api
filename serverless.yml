@@ -1,12 +1,16 @@
-org: markjgsmith
-app: serverless-books-api
 service: books-service
+
+custom:
+  db:
+    booksTable: ${self:service}-books-${self:provider.stage}
 
 provider:
   name: aws
   runtime: nodejs12.x
   stage: ${opt:stage, 'dev'}
   region: us-east-1
+  environment:
+    BOOKS_TABLE: ${self:custom.db.booksTable}
 
 functions:
   hello:
