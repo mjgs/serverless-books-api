@@ -37,7 +37,7 @@
     "start": "./node_modules/.bin/serverless offline -s dev",
     "test": "npm run test:unit && npm run test:integration",
     "test:unit": "./node_modules/.bin/mocha test/unit/**/index.js",
-    "test:integration": "echo \"Not implemented yet\"",
+    "test:integration": "./node_modules/.bin/serverless test",
     "debug:start": "export SLS_DEBUG=* && node --inspect-brk=9229 ./node_modules/.bin/serverless offline -s dev",
     "debug:test:unit": "export SLS_DEBUG=* && node ./node_modules/.bin/mocha --inspect-brk=9229 --recursive -R spec test/**/*.test.js",
     "debug:test:integration": "echo \"Not implemented yet\""
