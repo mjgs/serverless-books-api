@@ -23,6 +23,12 @@
 - [ ]   - get
 - [ ]   - getAll
 - [ ]   - update
+- [ ] Add Books API CRUD db adapters
+- [x]   - add
+- [ ]   - delete
+- [ ]   - get
+- [ ]   - getAll
+- [ ]   - update
 - [ ] Add Books API CRUD route config
 - [x]   - add
 - [ ]   - delete
