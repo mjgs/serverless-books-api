@@ -24,10 +24,38 @@ Implements a Books API for a Library, intended to be run on AWS using serverless
 └── test             - Tests
 ```
 
-## Tests
+## Development
+
+To run the functions locally:
 
 ```
-mocha test
+npm install
+npm start
+```
+
+The list the available endpoints will be printed to the console
+
+```
+GET  | http://localhost:3000/dev/hello
+POST | http://localhost:3000/dev/book/add
+etc
+```
+
+## Deploying
+
+Ensure you have configured serverless with the [correct aws access rights](https://github.com/serverless/serverless/blob/master/docs/providers/aws/guide/credentials.md). Then run:
+
+```
+serverless deploy
+```
+
+## Tests
+
+To run both unit and integration tests:
+
+```
+serverless deploy
+npm test
 ```
 
 ## Debugging
