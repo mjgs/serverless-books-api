@@ -1,7 +1,7 @@
 {
   "extends": ["standard"],
   "parserOptions": {
-    "ecmaVersion": 2017
+    "ecmaVersion": 2018
   },
   "rules": {
     // these are only here because I did not
