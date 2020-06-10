@@ -24,7 +24,7 @@
 - [ ]   - getAll
 - [ ]   - update
 - [ ] Add Books API CRUD route config
-- [ ]   - add
+- [x]   - add
 - [ ]   - delete
 - [ ]   - get
 - [ ]   - getAll

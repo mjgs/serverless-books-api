@@ -16,6 +16,14 @@ functions:
           method: get
           path: /hello
 
+  addBook:
+    handler: lib/functions/books/add.add
+    events:
+      - http:
+          method: post
+          cors: true
+          path: /book/add
+
 plugins:
   - serverless-pseudo-parameters
   - serverless-offline
