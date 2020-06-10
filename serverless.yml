@@ -11,6 +11,18 @@ provider:
   region: us-east-1
   environment:
     BOOKS_TABLE: ${self:custom.db.booksTable}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        - arn:aws:dynamodb:#{AWS::Region}:#{AWS::AccountId}:table/${self:custom.db.booksTable}
+        - arn:aws:dynamodb:#{AWS::Region}:#{AWS::AccountId}:table/${self:custom.db.booksTable}/index/uuid
 
 functions:
   hello:
@@ -30,6 +42,21 @@ functions:
           request:
             schema:
               application/json: ${file(lib/schemas/add_book_request.json)}
+
+resources:
+  Resources:
+    booksTable:
+      Type: AWS::DynamoDB::Table
+      DeletionPolicy: Retain
+      Properties:
+        TableName: ${self:custom.db.booksTable}
+        AttributeDefinitions:
+          - AttributeName: uuid
+            AttributeType: S
+        KeySchema:
+          - AttributeName: uuid
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
 
 plugins:
   - serverless-pseudo-parameters
