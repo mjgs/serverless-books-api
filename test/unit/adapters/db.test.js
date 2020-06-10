@@ -17,6 +17,7 @@ describe('Books Adapter', () => {
   describe('add', () => {
     it('should return a book object', async () => {
       // setup
+      const tableNameMock = chance.word();
       const paramsMock = {
         name: chance.sentence(),
         releaseDate: Date.now(),
@@ -32,7 +33,7 @@ describe('Books Adapter', () => {
       };
 
       // run
-      const book = await dbMock.add(paramsMock);
+      const book = await dbMock.add(tableNameMock, paramsMock);
 
       // test
       expect(book).to.not.be.empty;
@@ -45,6 +46,7 @@ describe('Books Adapter', () => {
 
     it('should throw an error', async () => {
       // setup
+      const tableNameMock = chance.word();
       const paramsMock = {
         name: chance.sentence(),
         releaseDate: Date.now(),
@@ -61,7 +63,7 @@ describe('Books Adapter', () => {
 
       // run
       try {
-        await dbMock.add(paramsMock);
+        await dbMock.add(tableNameMock, paramsMock);
       }
       catch (err) {
         // test
