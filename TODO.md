@@ -18,10 +18,22 @@
 3. Write books REST API using TDD
 
 - [ ] Create Books API CRUD functions
+- [x]   - add
+- [ ]   - delete
+- [ ]   - get
+- [ ]   - getAll
+- [ ]   - update
+- [ ] Add Books API CRUD route config
 - [ ]   - add
 - [ ]   - delete
 - [ ]   - get
 - [ ]   - getAll
 - [ ]   - update
-- [ ] Create authorize function
 - [ ] Create data validation schemas
+- [ ]   - add
+- [ ]   - delete
+- [ ]   - update
+- [ ] Create authorize function
+- [ ]   - add
+- [ ]   - delete
+- [ ]   - update
