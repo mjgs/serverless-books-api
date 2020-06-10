@@ -88,6 +88,10 @@ Set some breakpoints in your code (handlers or tests files), then
 3. Click the play button next to the drop down menu
 4. The debugger should then run the code and stop at your first breakpoint
 
+## Todo
+
+See the [TODO](https://github.com/mjgs/serverless-books-api/blob/master/TODO.md) page.
+
 ## Credits
 
 I found the following resources helpfull while building this repo:
