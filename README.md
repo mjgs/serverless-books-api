@@ -124,6 +124,7 @@ See the [TODO](https://github.com/mjgs/serverless-books-api/blob/master/TODO.md)
 
 I found the following resources helpfull while building this repo:
 
+- [AWS SDK for JavaScript](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest)
 - [Serverless Framework Documentation](https://www.serverless.com/framework/docs/)
 - [Full Stack Developmnt on AWS using Serverless](https://www.youtube.com/playlist?list=PLIIjEI2fYC-BZliSOIhWUqiiwadhCvewg)
 - [Testing Node serverless applications — AWS Lambda functions](https://blog.logrocket.com/testing-node-serverless-applications-aws-lambda-functions)
