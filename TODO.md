@@ -30,7 +30,7 @@
 - [ ]   - getAll
 - [ ]   - update
 - [ ] Create data validation schemas
-- [ ]   - add
+- [x]   - add
 - [ ]   - delete
 - [ ]   - update
 - [ ] Create authorize function

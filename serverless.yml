@@ -23,6 +23,9 @@ functions:
           method: post
           cors: true
           path: /book/add
+          request:
+            schema:
+              application/json: ${file(lib/schemas/add_book_request.json)}
 
 plugins:
   - serverless-pseudo-parameters
