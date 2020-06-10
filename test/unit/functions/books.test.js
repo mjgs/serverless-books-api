@@ -25,19 +25,21 @@ describe('books', () => {
       const nameMock = chance.sentence();
       const releaseDateMock = Date.now();
       const authorNameMock = chance.name();
-      dbStub.add = sinon.stub().returns(Promise.resolve({
+      dbStub.addBook = sinon.stub().returns({
         uuid: uuidMock,
         name: nameMock,
         releaseDate: releaseDateMock,
         authorName: authorNameMock
-      }));
+      });
 
       // run
       const response = await handlerMock.add(eventMock);
 
       // test
       expect(response).to.not.be.empty;
-      expect(dbStub.add.calledOnce).to.be.true;
+      expect(response.statusCode).to.be.equal(201);
+      expect(response.body).to.be.a('string');
+      expect(dbStub.addBook.calledOnce).to.be.true;
     });
 
     it('should throw an error', async () => {
@@ -45,7 +47,7 @@ describe('books', () => {
       const eventMock = {
         body: JSON.stringify({})
       };
-      dbStub.add = sinon.stub().throws(new Error('oh noes!'));
+      dbStub.addBook = sinon.stub().throws(new Error('oh noes!'));
 
       // run
       const response = await handlerMock.add(eventMock);
@@ -53,7 +55,6 @@ describe('books', () => {
       // test
       expect(response).to.not.be.empty;
       expect(response.statusCode).to.be.equal(500);
-      expect(JSON.parse(response.body).status).to.be.equal(500);
       expect(JSON.parse(response.body).message).to.be.equal('oh noes!');
     });
   });

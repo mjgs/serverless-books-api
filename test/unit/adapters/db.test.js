@@ -17,13 +17,15 @@ describe('db', () => {
   describe('add', () => {
     it('should return a book object', async () => {
       // setup
-      const tableNameMock = chance.word();
       const paramsMock = {
         name: chance.sentence(),
         releaseDate: Date.now(),
         authorName: chance.name()
       };
-      const putStub = sinon.stub().callsArgWith(1, null);
+      const promiseStub = sinon.stub().returns({});
+      const putStub = sinon.stub().returns({
+        promise: promiseStub
+      });
       awsSdkStub.DynamoDB = {
         DocumentClient: function() {
           return {
@@ -33,7 +35,7 @@ describe('db', () => {
       };
 
       // run
-      const book = await dbMock.add(tableNameMock, paramsMock);
+      const book = await dbMock.addBook(paramsMock);
 
       // test
       expect(book).to.not.be.empty;
@@ -42,17 +44,17 @@ describe('db', () => {
       expect(book.releaseDate).to.be.equal(paramsMock.releaseDate);
       expect(book.authorName).to.be.equal(paramsMock.authorName);
       expect(putStub.calledOnce).to.be.true;
+      expect(promiseStub.calledOnce).to.be.true;
     });
 
     it('should throw an error', async () => {
       // setup
-      const tableNameMock = chance.word();
       const paramsMock = {
         name: chance.sentence(),
         releaseDate: Date.now(),
         authorName: chance.name()
       };
-      const putStub = sinon.stub().callsArgWith(1, new Error('oh noes!'));
+      const putStub = sinon.stub().throws(new Error('oh noes!'));
       awsSdkStub.DynamoDB = {
         DocumentClient: function() {
           return {
@@ -63,12 +65,12 @@ describe('db', () => {
 
       // run
       try {
-        await dbMock.add(tableNameMock, paramsMock);
+        await dbMock.addBook(paramsMock);
       }
       catch (err) {
         // test
         expect(err).to.be.a('error');
-        expect(err).to.not.be.equal('oh noes!');
+        expect(err.message).to.be.equal('oh noes!');
         expect(putStub.calledOnce).to.be.true;
       }
     });
