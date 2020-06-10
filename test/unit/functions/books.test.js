@@ -14,7 +14,7 @@ const stubs = {
 };
 const handlerMock = proxyquire('../../../lib/functions/books/add', stubs);
 
-describe('Books API', () => {
+describe('books', () => {
   describe('add', () => {
     it('should return a response', async () => {
       // setup

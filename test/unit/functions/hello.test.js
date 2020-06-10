@@ -6,7 +6,7 @@ const expect = require('chai').expect;
 
 const handler = require('../../../lib/functions/hello');
 
-describe('Hello API', () => {
+describe('hello', () => {
   describe('hello', () => {
     it('should return a response', async () => {
       const response = await handler.hello({});

@@ -13,7 +13,7 @@ const stubs = {
 };
 const dbMock = proxyquire('../../../lib/adapters/db', stubs);
 
-describe('Books Adapter', () => {
+describe('db', () => {
   describe('add', () => {
     it('should return a book object', async () => {
       // setup
