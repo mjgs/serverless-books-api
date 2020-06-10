@@ -1,0 +1,71 @@
+- name: hello endpoint
+  endpoint:
+    function: hello
+  response:
+    status: 200
+
+- name: add book - good data
+  endpoint:
+    method: POST
+    path: /book/add
+  request:
+    body:
+      name: 'A book about something interesting'
+      releaseDate: 1591816375
+      authorName: 'John Smith'
+  response: 
+    status: 201
+    body:
+      name: 'A book about something interesting'
+      releaseDate: 1591816375
+      authorName: 'John Smith'
+
+- name: add book - empty body
+  endpoint:
+    method: POST
+    path: /book/add
+  request:
+    body:
+  response: 
+    status: 400
+    body:
+      message: 'Invalid request body'
+
+- name: add book - missing name
+  endpoint:
+    method: POST
+    path: /book/add
+  request:
+    body:
+      releaseDate: 1591816375
+      authorName: 'John Smith'
+  response: 
+    status: 400
+    body:
+      message: 'Invalid request body'
+
+- name: add book - missing releaseDate
+  endpoint:
+    method: POST
+    path: /book/add
+  request:
+    body:
+      name: 'A book about something interesting'
+      authorName: 'John Smith'
+  response: 
+    status: 400
+    body:
+      message: 'Invalid request body'
+
+- name: add book - missing authorName
+  endpoint:
+    method: POST
+    path: /book/add
+  request:
+    body:
+      name: 'A book about something interesting'
+      releaseDate: 1591816375
+  response: 
+    status: 400
+    body:
+      message: 'Invalid request body'
