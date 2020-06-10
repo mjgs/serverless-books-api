@@ -53,7 +53,8 @@ describe('Books API', () => {
       // test
       expect(response).to.not.be.empty;
       expect(response.statusCode).to.be.equal(500);
-      expect(response.message).to.be.equal('oh noes!');
+      expect(JSON.parse(response.body).status).to.be.equal(500);
+      expect(JSON.parse(response.body).message).to.be.equal('oh noes!');
     });
   });
 });
