@@ -18,28 +18,28 @@
 3. Write books REST API using TDD
 
 - [x] [Create crud add function](https://github.com/mjgs/serverless-books-api/pull/12)
-- [x]   - Create Books API CRUD functions
-- [x]   - Add Books API CRUD db adapters
-- [x]   - Add Books API CRUD route config
-- [x]   - Create data validation schemas
+- [x]   - Create handler
+- [x]   - Create db adapters
+- [x]   - Create route config
+- [x]   - Create validation schemas
 - [ ] Create crud delete function
-- [ ]   - Create Books API CRUD functions
-- [ ]   - Add Books API CRUD db adapters
-- [ ]   - Add Books API CRUD route config
-- [ ]   - Create data validation schemas
+- [ ]   - Create handler
+- [ ]   - Create db adapters
+- [ ]   - Create route config
+- [ ]   - Create validation schemas
 - [ ] Create crud get function
-- [ ]   - Create Books API CRUD functions
-- [ ]   - Add Books API CRUD db adapters
-- [ ]   - Add Books API CRUD route config
+- [ ]   - Create handler
+- [ ]   - Create db adapters
+- [ ]   - Create route config
 - [ ] Create crud getAll function
-- [ ]   - Create Books API CRUD functions
-- [ ]   - Add Books API CRUD db adapters
-- [ ]   - Add Books API CRUD route config
+- [ ]   - Create handler
+- [ ]   - Create db adapters
+- [ ]   - Create route config
 - [ ] Create crud update function
-- [ ]   - Create Books API CRUD functions
-- [ ]   - Add Books API CRUD db adapters
-- [ ]   - Add Books API CRUD route config
-- [ ]   - Create data validation schemas
+- [ ]   - Create handler
+- [ ]   - Create db adapters
+- [ ]   - Create route config
+- [ ]   - Create validation schemas
 - [ ] Create authorize function
 - [ ]   - add
 - [ ]   - delete
