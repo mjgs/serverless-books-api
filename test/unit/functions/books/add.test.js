@@ -6,11 +6,11 @@ const expect = require('chai').expect;
 const proxyquire = require('proxyquire').noCallThru();
 const sinon = require('sinon');
 const chance = new (require('chance'))();
-const uuid = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 
-const booksStub = {};
+const booksUtilStub = {};
 const stubs = {
-  '../../utils/books': booksStub
+  '../../utils/books': booksUtilStub
 };
 const handlerMock = proxyquire('../../../../lib/functions/books/add', stubs);
 
@@ -27,14 +27,14 @@ describe('add', () => {
         authorName: authorNameMock
       })
     };
-    const uuidMock = uuid.v4();
+    const uuidMock = uuidv4();
     const bookRecordMock = {
       uuid: uuidMock,
       name: nameMock,
       releaseDate: releaseDateMock,
       authorName: authorNameMock
     };
-    booksStub.addBook = sinon.stub().returns(bookRecordMock);
+    booksUtilStub.addBook = sinon.stub().returns(bookRecordMock);
 
     // run
     const response = await handlerMock.add(eventMock);
@@ -43,7 +43,7 @@ describe('add', () => {
     expect(response).to.not.be.empty;
     expect(response.statusCode).to.be.equal(201);
     expect(response.body).to.be.equal(JSON.stringify(bookRecordMock));
-    expect(booksStub.addBook.calledOnce).to.be.true;
+    expect(booksUtilStub.addBook.calledOnce).to.be.true;
   });
 
   it('should throw an error', async () => {
@@ -51,7 +51,7 @@ describe('add', () => {
     const eventMock = {
       body: JSON.stringify({})
     };
-    booksStub.addBook = sinon.stub().throws(new Error('oh noes!'));
+    booksUtilStub.addBook = sinon.stub().throws(new Error('oh noes!'));
 
     // run
     const response = await handlerMock.add(eventMock);

@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 /* eslint-disable no-unused-expressions */
 
-describe('adapters', () => {
-  require('./db');
+describe('hello', () => {
+  require('./hello.test.js');
 });

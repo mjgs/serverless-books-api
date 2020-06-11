@@ -3,5 +3,5 @@
 'use strict';
 
 describe('utils', () => {
-  require('./books.test.js');
+  require('./books');
 });
