@@ -21,7 +21,12 @@ describe('deleteItem', () => {
     // setup
     const tableNameMock = chance.word();
     const uuidMock = uuidv4();
-    const deleteResultMock = {};
+    const deleteResultMock = {
+      uuid: uuidMock,
+      name: chance.sentence(),
+      releaseDate: Date.now(),
+      authorName: chance.name()
+    };
     const promiseStub = sinon.stub().returns(deleteResultMock);
     const deleteStub = sinon.stub().returns({
       promise: promiseStub
@@ -33,7 +38,9 @@ describe('deleteItem', () => {
         };
       }
     };
-    const queryOptionsMock = {};
+    const queryOptionsMock = {
+      ReturnValue: 'ALL_OLD'
+    };
 
     // run
     const deleteItemResult = await deleteItemDbAdapterMock(tableNameMock, uuidMock, queryOptionsMock);
@@ -45,7 +52,8 @@ describe('deleteItem', () => {
     expect(deleteItemResult.deleteResult).to.be.eql(deleteResultMock);
     expect(deleteItemResult.deleteOptions.TableName).to.be.equal(tableNameMock);
     expect(deleteItemResult.deleteOptions.Key).to.be.an('object');
-    expect(deleteItemResult.deleteOptions.Key.id).to.be.equal(uuidMock);
+    expect(deleteItemResult.deleteOptions.Key.uuid).to.be.equal(uuidMock);
+    expect(deleteItemResult.deleteOptions.ReturnValue).to.be.equal('ALL_OLD');
     expect(deleteStub.calledOnce).to.be.true;
     expect(promiseStub.calledOnce).to.be.true;
   });

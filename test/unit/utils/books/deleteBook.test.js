@@ -26,7 +26,9 @@ describe('deleteBook', () => {
     };
     const deleteReturnMock = {
       deleteOptions: {},
-      deleteResults: deletedItemMock
+      deleteResult: {
+        Attributes: deletedItemMock
+      }
     };
     dbAdapterStub.deleteItem = sinon.stub().returns(deleteReturnMock);
 

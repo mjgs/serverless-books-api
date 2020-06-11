@@ -28,7 +28,7 @@ describe('addBook', () => {
         TableName: '',
         Item: Object.assign(paramsMock, { uuid: uuidMock })
       },
-      putResults: {}
+      putResult: {}
     };
     dbAdapterStub.putItem = sinon.stub().returns(putItemResultMock);
 
