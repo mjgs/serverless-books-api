@@ -3,4 +3,5 @@
 
 describe('db', () => {
   require('./putItem.test.js');
+  require('./deleteItem.test.js');
 });
