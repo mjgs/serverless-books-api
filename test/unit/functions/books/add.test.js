@@ -17,19 +17,24 @@ const handlerMock = proxyquire('../../../../lib/functions/books/add', stubs);
 describe('add', () => {
   it('should return a response', async () => {
     // setup
-    const eventMock = {
-      body: JSON.stringify({})
-    };
-    const uuidMock = uuid.v4();
     const nameMock = chance.sentence();
     const releaseDateMock = Date.now();
     const authorNameMock = chance.name();
-    booksStub.addBook = sinon.stub().returns({
+    const eventMock = {
+      body: JSON.stringify({
+        name: nameMock,
+        releaseDate: releaseDateMock,
+        authorName: authorNameMock
+      })
+    };
+    const uuidMock = uuid.v4();
+    const bookRecordMock = {
       uuid: uuidMock,
       name: nameMock,
       releaseDate: releaseDateMock,
       authorName: authorNameMock
-    });
+    };
+    booksStub.addBook = sinon.stub().returns(bookRecordMock);
 
     // run
     const response = await handlerMock.add(eventMock);
@@ -37,7 +42,7 @@ describe('add', () => {
     // test
     expect(response).to.not.be.empty;
     expect(response.statusCode).to.be.equal(201);
-    expect(response.body).to.be.a('string');
+    expect(response.body).to.be.equal(JSON.stringify(bookRecordMock));
     expect(booksStub.addBook.calledOnce).to.be.true;
   });
 
@@ -50,7 +55,6 @@ describe('add', () => {
 
     // run
     const response = await handlerMock.add(eventMock);
-    
     // test
     expect(response).to.not.be.empty;
     expect(response.statusCode).to.be.equal(500);
