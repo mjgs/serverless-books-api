@@ -57,11 +57,19 @@ serverless deploy
 To run both unit and integration tests:
 
 ```
-serverless deploy
 npm test
 ```
 
-For the integration tests to run correctly you will have to add the project to your serverless website account. Follow the instructions when prompted, then re-run the tests.
+Before integration tests are run, the service will be deployed to AWS, so you have to have serverless cli correctly configured (see [Deploying](#deploying).
+
+Also for the integration tests to run correctly you will have to add the project to your serverless website account. You will be prompted if it's not setup when you run the tests the first time, so follow the instructions and then re-run the tests.
+
+You can run individual test sets like so:
+
+```
+npm run test:unit
+npm run test:integration
+```
 
 ## Debugging
 
