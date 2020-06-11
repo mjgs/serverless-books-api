@@ -75,7 +75,10 @@
     method: POST
     path: /book/qwertyuiop/delete
   response:
-    status: 200
+    status: 404
+    body:
+      message: 'Not found'
+      status: 404
 
 - name: get book - non-existent item
   endpoint:
