@@ -4,4 +4,5 @@
 describe('books', () => {
   require('./add.test.js');
   require('./delete.test.js');
+  require('./get.test.js');
 });

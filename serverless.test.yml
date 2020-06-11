@@ -76,3 +76,13 @@
     path: /book/qwertyuiop/delete
   response:
     status: 200
+
+- name: get book - non-existent item
+  endpoint:
+    method: GET
+    path: /book/qwertyuiop
+  response:
+    status: 404
+    body:
+      message: 'Not found'
+      status: 404
