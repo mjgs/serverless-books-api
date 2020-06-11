@@ -23,7 +23,7 @@
 - [x]   - Create route config
 - [x]   - Create validation schema
 - [ ] Create crud delete function
-- [ ]   - Create handler
+- [x]   - Create handler
 - [ ]   - Create db adapter
 - [ ]   - Create route config
 - [ ]   - Create validation schema
