@@ -24,19 +24,23 @@
 - [x]   - Create validation schema
 - [ ] Create crud delete function
 - [x]   - Create handler
+- [ ]   - Create util
 - [ ]   - Create db adapter
 - [ ]   - Create route config
 - [ ]   - Create validation schema
 - [ ] Create crud get function
 - [ ]   - Create handler
+- [ ]   - Create util
 - [ ]   - Create db adapter
 - [ ]   - Create route config
 - [ ] Create crud getAll function
 - [ ]   - Create handler
+- [ ]   - Create util
 - [ ]   - Create db adapter
 - [ ]   - Create route config
 - [ ] Create crud update function
 - [ ]   - Create handler
+- [ ]   - Create util
 - [ ]   - Create db adapter
 - [ ]   - Create route config
 - [ ]   - Create validation schema
