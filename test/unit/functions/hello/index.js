@@ -2,7 +2,6 @@
 /* eslint-disable no-unused-expressions */
 'use strict';
 
-describe('functions', () => {
-  require('./books');
-  require('./hello');
+describe('hello', () => {
+  require('./hello.test.js');
 });
