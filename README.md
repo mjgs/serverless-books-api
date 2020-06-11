@@ -10,6 +10,10 @@ Implements a Books API for a Library, intended to be run on AWS using serverless
 
 ## Assumptions
 
+- Authorization is only required for routes that modify data
+- Correctly configured serverless cli installation
+- AWS account with the required priveledges
+
 ## Project structure
 
 ```
