@@ -8,9 +8,9 @@ const sinon = require('sinon');
 const chance = new (require('chance'))();
 const uuid = require('uuid');
 
-const dbStub = sinon.stub();
+const booksStub = {};
 const stubs = {
-  '../../adapters/db': dbStub
+  '../../utils/books': booksStub
 };
 const handlerMock = proxyquire('../../../lib/functions/books/add', stubs);
 
@@ -25,7 +25,7 @@ describe('books', () => {
       const nameMock = chance.sentence();
       const releaseDateMock = Date.now();
       const authorNameMock = chance.name();
-      dbStub.addBook = sinon.stub().returns({
+      booksStub.addBook = sinon.stub().returns({
         uuid: uuidMock,
         name: nameMock,
         releaseDate: releaseDateMock,
@@ -39,7 +39,7 @@ describe('books', () => {
       expect(response).to.not.be.empty;
       expect(response.statusCode).to.be.equal(201);
       expect(response.body).to.be.a('string');
-      expect(dbStub.addBook.calledOnce).to.be.true;
+      expect(booksStub.addBook.calledOnce).to.be.true;
     });
 
     it('should throw an error', async () => {
@@ -47,7 +47,7 @@ describe('books', () => {
       const eventMock = {
         body: JSON.stringify({})
       };
-      dbStub.addBook = sinon.stub().throws(new Error('oh noes!'));
+      booksStub.addBook = sinon.stub().throws(new Error('oh noes!'));
 
       // run
       const response = await handlerMock.add(eventMock);
