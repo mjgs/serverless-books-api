@@ -61,6 +61,8 @@ serverless deploy
 npm test
 ```
 
+For the integration tests to run correctly you will have to add the project to your serverless website account. Follow the instructions when prompted, then re-run the tests.
+
 ## Debugging
 
 For interactive debugging in VSCode, add the following to .vscode/launch.json:
