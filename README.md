@@ -37,12 +37,11 @@ npm install
 npm start
 ```
 
-The list the available endpoints will be printed to the console
+The list of the available endpoints will be printed to the console:
 
 ```
 GET  | http://localhost:3000/dev/hello
 POST | http://localhost:3000/dev/book/add
-etc
 ```
 
 ## Deploying
