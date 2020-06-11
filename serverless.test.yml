@@ -70,13 +70,9 @@
     body:
       message: 'Invalid request body'
 
-- name: delete book
+- name: delete book - non-existent item
   endpoint:
     method: POST
     path: /book/qwertyuiop/delete
-  request:
-    body: ''
   response:
-    status: 404
-    body:
-      message: 'Not found'
+    status: 200
