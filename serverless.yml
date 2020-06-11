@@ -44,6 +44,14 @@ functions:
             schema:
               application/json: ${file(lib/schemas/add_book_request.json)}
 
+  deleteBook:
+    handler: lib/functions/books/delete.delete
+    events:
+      - http:
+          method: post
+          cors: true
+          path: /book/{bookUuid}/delete
+
 resources:
   Resources:
     booksTable:
