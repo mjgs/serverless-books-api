@@ -10,6 +10,10 @@ Implements a Books API for a Library, intended to be run on AWS using serverless
 
 ## Assumptions
 
+- Authorization is only required for routes that modify data
+- Correctly configured serverless cli installation
+- AWS account with the required priveledges
+
 ## Project structure
 
 ```
@@ -33,12 +37,11 @@ npm install
 npm start
 ```
 
-The list the available endpoints will be printed to the console
+The list of the available endpoints will be printed to the console:
 
 ```
 GET  | http://localhost:3000/dev/hello
 POST | http://localhost:3000/dev/book/add
-etc
 ```
 
 ## Deploying
@@ -57,6 +60,8 @@ To run both unit and integration tests:
 serverless deploy
 npm test
 ```
+
+For the integration tests to run correctly you will have to add the project to your serverless website account. Follow the instructions when prompted, then re-run the tests.
 
 ## Debugging
 
