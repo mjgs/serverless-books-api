@@ -24,10 +24,9 @@
 - [x]   - Create validation schema
 - [ ] Create crud delete function
 - [x]   - Create handler
-- [ ]   - Create util
-- [ ]   - Create db adapter
-- [ ]   - Create route config
-- [ ]   - Create validation schema
+- [x]   - Create util
+- [x]   - Create db adapter
+- [x]   - Create route config
 - [ ] Create crud get function
 - [ ]   - Create handler
 - [ ]   - Create util
