@@ -97,6 +97,23 @@ describe('db', () => {
       }
     });
 
+    it('should throw a tableName bad argument error', async () => {
+      // setup
+      const tableNameMock = undefined;
+      const paramsMock = {};
+      const queryOptionsMock = {};
+
+      // run
+      try {
+        await dbAdapterMock.putItem(tableNameMock, paramsMock, queryOptionsMock);
+      }
+      catch (err) {
+        // test
+        expect(err).to.be.a('error');
+        expect(err.message).to.be.equal('Bad argument: tableName must be a string');
+      }
+    });
+
     it('should throw a params bad argument error', async () => {
       // setup
       const tableNameMock = chance.word();
@@ -111,6 +128,23 @@ describe('db', () => {
         // test
         expect(err).to.be.a('error');
         expect(err.message).to.be.equal('Bad argument: params must be an object');
+      }
+    });
+
+    it('should throw a options bad argument error', async () => {
+      // setup
+      const tableNameMock = chance.word();
+      const paramsMock = {};
+      const queryOptionsMock = undefined;
+
+      // run
+      try {
+        await dbAdapterMock.putItem(tableNameMock, paramsMock, queryOptionsMock);
+      }
+      catch (err) {
+        // test
+        expect(err).to.be.a('error');
+        expect(err.message).to.be.equal('Bad argument: options must be an object');
       }
     });
   });
