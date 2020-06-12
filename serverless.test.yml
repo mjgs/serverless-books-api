@@ -89,3 +89,10 @@
     body:
       message: 'Not found'
       status: 404
+
+- name: get all books
+  endpoint:
+    method: GET
+    path: /books
+  response:
+    status: 200
