@@ -9,10 +9,8 @@ const chance = new (require('chance'))();
 const { v4: uuidv4 } = require('uuid');
 
 const awsSdkStub = {};
-// const uuidStub = {};
 const stubs = {
   'aws-sdk': awsSdkStub,
-  // uuid: uuidStub
 };
 const scanDbAdapterMock = proxyquire('../../../../lib/adapters/db/scan', stubs);
 
@@ -32,43 +30,43 @@ describe('scan', () => {
       releaseDate: Date.now(),
       authorName: chance.name()
     };
-    const getAllReturnMock = [ bookMock1, bookMock2 ];
-    const promiseStub = sinon.stub().returns(getAllReturnMock);
-    const getAllStub = sinon.stub().returns({
+    const scanReturnMock = [ bookMock1, bookMock2 ];
+    const promiseStub = sinon.stub().returns(scanReturnMock);
+    const scanStub = sinon.stub().returns({
       promise: promiseStub
     });
     awsSdkStub.DynamoDB = {
       DocumentClient: function() {
         return {
-          getAll: getAllStub
+          scan: scanStub
         };
       }
     };
     const queryOptionsMock = {};
 
     // run
-    const getItemResult = await scanDbAdapterMock(tableNameMock, queryOptionsMock);
+    const scanResult = await scanDbAdapterMock(tableNameMock, queryOptionsMock);
 
     // test
-    expect(getItemResult).to.not.be.empty;
-    expect(getItemResult.getAllOptions).to.be.an('object');
-    expect(getItemResult.getAllResult).to.be.an('object');
-    expect(getItemResult.getAllEesult).to.be.eql(getAllReturnMock);
-    expect(getItemResult.getAllOptions.TableName).to.be.equal(tableNameMock);
-    expect(getAllStub.calledOnce).to.be.true;
+    expect(scanResult).to.not.be.empty;
+    expect(scanResult.scanOptions).to.be.an('object');
+    expect(scanResult.scanResult).to.be.an('array');
+    expect(scanResult.scanResult).to.be.eql(scanReturnMock);
+    expect(scanResult.scanOptions.TableName).to.be.equal(tableNameMock);
+    expect(scanStub.calledOnce).to.be.true;
     expect(promiseStub.calledOnce).to.be.true;
   });
 
   it('should throw an error', async () => {
     // setup
     const tableNameMock = chance.word();
-    const getAllStub = sinon.stub().returns({
+    const scanStub = sinon.stub().returns({
       promise: () => Promise.reject(new Error('oh noes!'))
     });
     awsSdkStub.DynamoDB = {
       DocumentClient: function() {
         return {
-          getAll: getAllStub
+          scan: scanStub
         };
       }
     };

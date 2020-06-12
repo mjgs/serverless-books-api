@@ -29,14 +29,14 @@ describe('getAllBooks', () => {
       releaseDate: Date.now(),
       authorName: chance.name()
     };
-    const getAllReturnMock = [ bookMock1, bookMock2 ];
-    const getReturnMock = {
-      getOptions: {},
-      getResult: {
-        Items: getAllReturnMock
+    const bookListMock = [ bookMock1, bookMock2 ];
+    const scanReturnMock = {
+      scanOptions: {},
+      scanResult: {
+        Items: bookListMock
       }
     };
-    dbAdapterStub.scan = sinon.stub().returns(getReturnMock);
+    dbAdapterStub.scan = sinon.stub().returns(scanReturnMock);
 
     // run
     const books = await getAllBooksUtilMock();
@@ -44,7 +44,7 @@ describe('getAllBooks', () => {
     // test
     expect(books).to.be.an('array');
     expect(books.length).to.be.equal(2);
-    expect(books).to.be.eql(getAllReturnMock);
+    expect(books).to.be.eql(bookListMock);
     expect(dbAdapterStub.scan.calledOnce).to.be.true;
   });
 
