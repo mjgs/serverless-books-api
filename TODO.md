@@ -32,7 +32,7 @@
 - [x]   - Create util
 - [x]   - Create db adapter
 - [x]   - Create route config
-- [x] [Create crud getAll function](https://github.com/mjgs/serverless-books-api/pull/35)
+- [x] [Create crud getAll function](https://github.com/mjgs/serverless-books-api/pull/35) - [also](https://github.com/mjgs/serverless-books-api/pull/36)
 - [x]   - Create handler
 - [x]   - Create util
 - [x]   - Create db adapter
