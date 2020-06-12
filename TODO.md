@@ -22,17 +22,17 @@
 - [x]   - Create db adapter
 - [x]   - Create route config
 - [x]   - Create validation schema
-- [x] Create crud delete function
+- [x] [Create crud delete function](https://github.com/mjgs/serverless-books-api/pull/32)
 - [x]   - Create handler
 - [x]   - Create util
 - [x]   - Create db adapter
 - [x]   - Create route config
-- [x] Create crud get function
+- [x] [Create crud get function](https://github.com/mjgs/serverless-books-api/pull/33)
 - [x]   - Create handler
 - [x]   - Create util
 - [x]   - Create db adapter
 - [x]   - Create route config
-- [x] Create crud getAll function
+- [x] [Create crud getAll function](https://github.com/mjgs/serverless-books-api/pull/35)
 - [x]   - Create handler
 - [x]   - Create util
 - [x]   - Create db adapter
