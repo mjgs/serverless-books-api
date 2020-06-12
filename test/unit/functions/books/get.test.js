@@ -57,11 +57,13 @@ describe('get', () => {
     booksStub.getBook = sinon.stub().throws(new Error('oh noes!'));
 
     // run
-    const response = await handlerMock.get(eventMock);
-
-    // test
-    expect(response).to.not.be.empty;
-    expect(response.statusCode).to.be.equal(500);
-    expect(JSON.parse(response.body).message).to.be.equal('oh noes!');
+    try {
+      await handlerMock.get(eventMock);
+    }
+    catch (err) {
+      // test
+      expect(err).to.be.an('error');
+      expect(err.message).to.be.equal('oh noes!');
+    }
   });
 });
