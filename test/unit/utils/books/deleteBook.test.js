@@ -30,7 +30,7 @@ describe('deleteBook', () => {
         Attributes: deletedItemMock
       }
     };
-    dbAdapterStub.deleteItem = sinon.stub().returns(deleteReturnMock);
+    dbAdapterStub.delete = sinon.stub().returns(deleteReturnMock);
 
     // run
     const book = await deleteBookUtilMock(uuidMock);
@@ -41,13 +41,13 @@ describe('deleteBook', () => {
     expect(book.name).to.be.equal(deletedItemMock.name);
     expect(book.releaseDate).to.be.equal(deletedItemMock.releaseDate);
     expect(book.authorName).to.be.equal(deletedItemMock.authorName);
-    expect(dbAdapterStub.deleteItem.calledOnce).to.be.true;
+    expect(dbAdapterStub.delete.calledOnce).to.be.true;
   });
 
   it('should throw an error', async () => {
     // setup
     const uuidMock = uuidv4();
-    dbAdapterStub.deleteItem = sinon.stub().throws(new Error('oh noes!'));
+    dbAdapterStub.delete = sinon.stub().throws(new Error('oh noes!'));
 
     // run
     try {

@@ -29,14 +29,14 @@ describe('getAllBooks', () => {
       releaseDate: Date.now(),
       authorName: chance.name()
     };
-    const getAllReturnMock = [ bookMock1, bookMock2 ];
-    const getReturnMock = {
-      getOptions: {},
-      getResult: {
-        Items: getAllReturnMock
+    const bookListMock = [ bookMock1, bookMock2 ];
+    const scanReturnMock = {
+      scanOptions: {},
+      scanResult: {
+        Items: bookListMock
       }
     };
-    dbAdapterStub.scan = sinon.stub().returns(getReturnMock);
+    dbAdapterStub.getAll = sinon.stub().returns(scanReturnMock);
 
     // run
     const books = await getAllBooksUtilMock();
@@ -44,13 +44,13 @@ describe('getAllBooks', () => {
     // test
     expect(books).to.be.an('array');
     expect(books.length).to.be.equal(2);
-    expect(books).to.be.eql(getAllReturnMock);
-    expect(dbAdapterStub.scan.calledOnce).to.be.true;
+    expect(books).to.be.eql(bookListMock);
+    expect(dbAdapterStub.getAll.calledOnce).to.be.true;
   });
 
   it('should throw an error', async () => {
     // setup
-    dbAdapterStub.scan = sinon.stub().throws(new Error('oh noes!'));
+    dbAdapterStub.getAll = sinon.stub().throws(new Error('oh noes!'));
 
     // run
     try {
