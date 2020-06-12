@@ -32,11 +32,11 @@
 - [x]   - Create util
 - [x]   - Create db adapter
 - [x]   - Create route config
-- [ ] Create crud getAll function
-- [ ]   - Create handler
-- [ ]   - Create util
-- [ ]   - Create db adapter
-- [ ]   - Create route config
+- [x] Create crud getAll function
+- [x]   - Create handler
+- [x]   - Create util
+- [x]   - Create db adapter
+- [x]   - Create route config
 - [ ] Create crud update function
 - [ ]   - Create handler
 - [ ]   - Create util
