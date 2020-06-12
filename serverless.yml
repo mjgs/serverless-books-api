@@ -60,6 +60,14 @@ functions:
           cors: true
           path: /book/{bookUuid}
 
+  getAllBooks:
+    handler: lib/functions/books/getAll.getAll
+    events:
+      - http:
+          method: get
+          cors: true
+          path: /books
+
 resources:
   Resources:
     booksTable:
