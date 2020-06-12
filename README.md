@@ -7,6 +7,7 @@ Implements a Books API for a Library, intended to be run on AWS using serverless
 - Functions run on AWS Lambda
 - Data is stored in AWS DynamoDB
 - Includes a very simple token based authorization for operations that modify data
+- Uses domain driven design techniques with handlers/utilities/adapters layers
 
 ## Assumptions
 
@@ -24,7 +25,7 @@ Implements a Books API for a Library, intended to be run on AWS using serverless
 │   ├── functions    - Functions that get deployed as lambdas to cloud infrastructure
 │   ├── schemas      - Used by cloud infrastructure to validate request data
 │   └── utils        - Shared utility functions
-├── serverless.yml   - Cloud dployment configuration
+├── serverless.yml   - Cloud deployment configuration
 └── test             - Tests
 ```
 

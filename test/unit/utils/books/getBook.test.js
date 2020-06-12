@@ -44,6 +44,29 @@ describe('getBook', () => {
     expect(dbAdapterStub.getItem.calledOnce).to.be.true;
   });
 
+  it('should throw a 404 error', async () => {
+    // setup
+    const uuidMock = uuidv4();
+    const getReturnMock = {
+      getOptions: {},
+      getResult: {
+        Item: {}
+      }
+    };
+    dbAdapterStub.getItem = sinon.stub().returns(getReturnMock);
+
+    // run
+    try {
+      await getBookUtilMock(uuidMock);
+    }
+    catch (err) {
+      // test
+      expect(err).to.be.a('error');
+      expect(err.message).to.be.equal('Not found');
+      expect(err.status).to.be.equal(404);
+    }
+  });
+
   it('should throw an error', async () => {
     // setup
     const uuidMock = uuidv4();

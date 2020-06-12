@@ -12,37 +12,35 @@ const booksStub = {};
 const stubs = {
   '../../utils/books': booksStub
 };
-const handlerMock = proxyquire('../../../../lib/functions/books/get', stubs);
+const handlerMock = proxyquire('../../../../lib/functions/books/getAll', stubs);
 
-describe('get', () => {
+describe('getAll', () => {
   it('should return a response', async () => {
     // setup
-    const uuidMock = uuidv4();
-    const nameMock = chance.sentence();
-    const releaseDateMock = Date.now();
-    const authorNameMock = chance.name();
-    const eventMock = {
-      body: '',
-      pathParameters: {
-        bookUuid: uuidMock
-      }
+    const eventMock = {};
+    const bookMock1 = {
+      uuid: uuidv4(),
+      name: chance.sentence(),
+      releaseDate: Date.now(),
+      authorName: chance.name()
     };
-    const getBookReturn = {
-      uuid: uuidMock,
-      name: nameMock,
-      releaseDate: releaseDateMock,
-      authorName: authorNameMock
+    const bookMock2 = {
+      uuid: uuidv4(),
+      name: chance.sentence(),
+      releaseDate: Date.now(),
+      authorName: chance.name()
     };
-    booksStub.getBook = sinon.stub().returns(getBookReturn);
+    const getAllBooksReturn = [ bookMock1, bookMock2 ];
+    booksStub.getAllBooks = sinon.stub().returns(getAllBooksReturn);
 
     // run
-    const response = await handlerMock.get(eventMock);
+    const response = await handlerMock.getAll(eventMock);
 
     // test
     expect(response).to.not.be.empty;
     expect(response.statusCode).to.be.equal(200);
-    expect(response.body).to.be.eql(JSON.stringify(getBookReturn));
-    expect(booksStub.getBook.calledOnce).to.be.true;
+    expect(response.body).to.be.eql(JSON.stringify(getAllBooksReturn));
+    expect(booksStub.getAllBooks.calledOnce).to.be.true;
   });
 
   it('should throw an error', async () => {
@@ -58,11 +56,11 @@ describe('get', () => {
 
     // run
     try {
-      await handlerMock.get(eventMock);
+      await handlerMock.getAll(eventMock);
     }
     catch (err) {
       // test
-      expect(err).to.be.an('error');
+      expect(err).to.not.be.empty;
       expect(err.message).to.be.equal('oh noes!');
     }
   });
