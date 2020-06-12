@@ -30,7 +30,7 @@ describe('getBook', () => {
         Item: getItemMock
       }
     };
-    dbAdapterStub.getItem = sinon.stub().returns(getReturnMock);
+    dbAdapterStub.get = sinon.stub().returns(getReturnMock);
 
     // run
     const book = await getBookUtilMock(uuidMock);
@@ -41,7 +41,7 @@ describe('getBook', () => {
     expect(book.name).to.be.equal(getItemMock.name);
     expect(book.releaseDate).to.be.equal(getItemMock.releaseDate);
     expect(book.authorName).to.be.equal(getItemMock.authorName);
-    expect(dbAdapterStub.getItem.calledOnce).to.be.true;
+    expect(dbAdapterStub.get.calledOnce).to.be.true;
   });
 
   it('should throw a 404 error', async () => {
@@ -53,7 +53,7 @@ describe('getBook', () => {
         Item: {}
       }
     };
-    dbAdapterStub.getItem = sinon.stub().returns(getReturnMock);
+    dbAdapterStub.get = sinon.stub().returns(getReturnMock);
 
     // run
     try {
@@ -70,7 +70,7 @@ describe('getBook', () => {
   it('should throw an error', async () => {
     // setup
     const uuidMock = uuidv4();
-    dbAdapterStub.getItem = sinon.stub().throws(new Error('oh noes!'));
+    dbAdapterStub.get = sinon.stub().throws(new Error('oh noes!'));
 
     // run
     try {

@@ -36,7 +36,7 @@ describe('getAllBooks', () => {
         Items: bookListMock
       }
     };
-    dbAdapterStub.scan = sinon.stub().returns(scanReturnMock);
+    dbAdapterStub.getAll = sinon.stub().returns(scanReturnMock);
 
     // run
     const books = await getAllBooksUtilMock();
@@ -45,12 +45,12 @@ describe('getAllBooks', () => {
     expect(books).to.be.an('array');
     expect(books.length).to.be.equal(2);
     expect(books).to.be.eql(bookListMock);
-    expect(dbAdapterStub.scan.calledOnce).to.be.true;
+    expect(dbAdapterStub.getAll.calledOnce).to.be.true;
   });
 
   it('should throw an error', async () => {
     // setup
-    dbAdapterStub.scan = sinon.stub().throws(new Error('oh noes!'));
+    dbAdapterStub.getAll = sinon.stub().throws(new Error('oh noes!'));
 
     // run
     try {

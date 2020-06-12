@@ -30,7 +30,7 @@ describe('addBook', () => {
       },
       putResult: {}
     };
-    dbAdapterStub.putItem = sinon.stub().returns(putItemResultMock);
+    dbAdapterStub.create = sinon.stub().returns(putItemResultMock);
 
     // run
     const book = await addBookUtilMock(paramsMock);
@@ -41,7 +41,7 @@ describe('addBook', () => {
     expect(book.name).to.be.equal(paramsMock.name);
     expect(book.releaseDate).to.be.equal(paramsMock.releaseDate);
     expect(book.authorName).to.be.equal(paramsMock.authorName);
-    expect(dbAdapterStub.putItem.calledOnce).to.be.true;
+    expect(dbAdapterStub.create.calledOnce).to.be.true;
   });
 
   it('should throw an error', async () => {
@@ -51,7 +51,7 @@ describe('addBook', () => {
       releaseDate: Date.now(),
       authorName: chance.name()
     };
-    dbAdapterStub.putItem = sinon.stub().throws(new Error('oh noes!'));
+    dbAdapterStub.create = sinon.stub().throws(new Error('oh noes!'));
 
     // run
     try {
