@@ -10,9 +10,9 @@ const { v4: uuidv4 } = require('uuid');
 
 const booksStub = {};
 const stubs = {
-  '../../utils/books': booksStub
+  '../utils': booksStub
 };
-const handlerMock = proxyquire('../../../../lib/functions/books/getAll', stubs);
+const handlerMock = proxyquire('../../../lib/functions/getAll', stubs);
 
 describe('getAll', () => {
   it('should return a response', async () => {

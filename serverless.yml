@@ -27,14 +27,14 @@ provider:
 
 functions:
   hello:
-    handler: lib/functions/hello/index.hello
+    handler: lib/functions/hello.hello
     events:
       - http:
           method: get
           path: /hello
 
   addBook:
-    handler: lib/functions/books/add.add
+    handler: lib/functions/add.add
     events:
       - http:
           method: post
@@ -45,7 +45,7 @@ functions:
               application/json: ${file(lib/schemas/add_book_request.json)}
 
   deleteBook:
-    handler: lib/functions/books/delete.delete
+    handler: lib/functions/delete.delete
     events:
       - http:
           method: post
@@ -53,7 +53,7 @@ functions:
           path: /book/{bookUuid}/delete
 
   getBook:
-    handler: lib/functions/books/get.get
+    handler: lib/functions/get.get
     events:
       - http:
           method: get
@@ -61,7 +61,7 @@ functions:
           path: /book/{bookUuid}
 
   getAllBooks:
-    handler: lib/functions/books/getAll.getAll
+    handler: lib/functions/getAll.getAll
     events:
       - http:
           method: get

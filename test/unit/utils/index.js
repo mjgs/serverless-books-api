@@ -3,5 +3,8 @@
 'use strict';
 
 describe('utils', () => {
-  require('./books');
+  require('./addBook.test.js');
+  require('./deleteBook.test.js');
+  require('./getBook.test.js');
+  require('./getAllBooks.test.js');
 });
