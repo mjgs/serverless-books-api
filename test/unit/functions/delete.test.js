@@ -10,11 +10,11 @@ const { v4: uuidv4 } = require('uuid');
 
 const booksStub = {};
 const stubs = {
-  '../../utils/books': booksStub
+  '../utils': booksStub
 };
-const handlerMock = proxyquire('../../../../lib/functions/books/get', stubs);
+const handlerMock = proxyquire('../../../lib/functions/delete', stubs);
 
-describe('get', () => {
+describe('delete', () => {
   it('should return a response', async () => {
     // setup
     const uuidMock = uuidv4();
@@ -27,43 +27,41 @@ describe('get', () => {
         bookUuid: uuidMock
       }
     };
-    const getBookReturn = {
+    const deleteBookReturn = {
       uuid: uuidMock,
       name: nameMock,
       releaseDate: releaseDateMock,
       authorName: authorNameMock
     };
-    booksStub.getBook = sinon.stub().returns(getBookReturn);
+    booksStub.deleteBook = sinon.stub().returns(deleteBookReturn);
 
     // run
-    const response = await handlerMock.get(eventMock);
+    const response = await handlerMock.delete(eventMock);
 
     // test
     expect(response).to.not.be.empty;
     expect(response.statusCode).to.be.equal(200);
-    expect(response.body).to.be.eql(JSON.stringify(getBookReturn));
-    expect(booksStub.getBook.calledOnce).to.be.true;
+    expect(response.body).to.be.eql(JSON.stringify(deleteBookReturn));
+    expect(booksStub.deleteBook.calledOnce).to.be.true;
   });
 
   it('should throw an error', async () => {
     // setup
-    const uuidMock = uuidv4();
+    const mockBookUuid = uuidv4();
     const eventMock = {
       body: '',
       pathParameters: {
-        bookUuid: uuidMock
+        bookUuid: mockBookUuid
       }
     };
-    booksStub.getBook = sinon.stub().throws(new Error('oh noes!'));
+    booksStub.deleteBook = sinon.stub().throws(new Error('oh noes!'));
 
     // run
-    try {
-      await handlerMock.get(eventMock);
-    }
-    catch (err) {
-      // test
-      expect(err).to.be.an('error');
-      expect(err.message).to.be.equal('oh noes!');
-    }
+    const response = await handlerMock.delete(eventMock);
+
+    // test
+    expect(response).to.not.be.empty;
+    expect(response.statusCode).to.be.equal(500);
+    expect(JSON.parse(response.body).message).to.be.equal('oh noes!');
   });
 });

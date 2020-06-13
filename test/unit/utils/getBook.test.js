@@ -10,9 +10,9 @@ const { v4: uuidv4 } = require('uuid');
 
 const dbAdapterStub = {};
 const stubs = {
-  '../../adapters/db': dbAdapterStub
+  '../adapters/db': dbAdapterStub
 };
-const getBookUtilMock = proxyquire('../../../../lib/utils/books/getBook', stubs);
+const getBookUtilMock = proxyquire('../../../lib/utils/getBook', stubs);
 
 describe('getBook', () => {
   it('should return a book object', async () => {
