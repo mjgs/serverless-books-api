@@ -2,11 +2,15 @@
 /* eslint-disable no-unused-expressions */
 'use strict';
 
-const expect = require('chai').expect;
+const chai = require('chai');
+const chaiAsPromised = require('chai-as-promised');
+const expect = chai.expect;
 const proxyquire = require('proxyquire').noCallThru();
 const sinon = require('sinon');
 const chance = new (require('chance'))();
 const { v4: uuidv4 } = require('uuid');
+
+chai.use(chaiAsPromised);
 
 const dbAdapterStub = {};
 const stubs = {
@@ -15,7 +19,7 @@ const stubs = {
 const getAllBooksUtilMock = proxyquire('../../../lib/utils/getAllBooks', stubs);
 
 describe('getAllBooks', () => {
-  it('should return a list of book objects', async () => {
+  it('should get all books', async () => {
     // setup
     const bookMock1 = {
       uuid: uuidv4(),
@@ -30,36 +34,35 @@ describe('getAllBooks', () => {
       authorName: chance.name()
     };
     const bookListMock = [ bookMock1, bookMock2 ];
-    const scanReturnMock = {
-      scanOptions: {},
-      scanResult: {
-        Items: bookListMock
-      }
-    };
-    dbAdapterStub.getAll = sinon.stub().returns(scanReturnMock);
+    dbAdapterStub.getAll = sinon.stub().returns(Promise.resolve(bookListMock));
 
     // run
-    const books = await getAllBooksUtilMock();
+    const promise = getAllBooksUtilMock();
 
     // test
-    expect(books).to.be.an('array');
-    expect(books.length).to.be.equal(2);
-    expect(books).to.be.eql(bookListMock);
-    expect(dbAdapterStub.getAll.calledOnce).to.be.true;
+    return expect(promise).to.eventually.be.fulfilled
+      .then((value) => {
+        expect(value).to.be.eql(bookListMock);
+        expect(dbAdapterStub.getAll.calledOnce).to.be.true;
+      });
   });
 
-  it('should throw an error', async () => {
+  it('should return an error', async () => {
     // setup
-    dbAdapterStub.getAll = sinon.stub().throws(new Error('oh noes!'));
+    dbAdapterStub.getAll = sinon.stub().returns(Promise.reject(new Error('oh noes!')));
+    const consoleErrorStub = sinon.stub(console, 'error');
 
     // run
-    try {
-      await getAllBooksUtilMock();
-    }
-    catch (err) {
-      // test
-      expect(err).to.be.a('error');
-      expect(err.message).to.be.equal('oh noes!');
-    }
+    const promise = getAllBooksUtilMock();
+
+    // test
+    return expect(promise).to.eventually.be.rejected
+      .then((err) => {
+        expect(err).to.be.a('error');
+        expect(err.message).to.be.equal('Error running utils.getAllBooks');
+        expect(dbAdapterStub.getAll.calledOnce).to.be.true;
+        expect(consoleErrorStub.calledOnce).to.be.true;
+        consoleErrorStub.restore();
+      });
   });
 });
