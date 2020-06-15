@@ -23,13 +23,14 @@ describe('delete', () => {
         bookUuid: uuidMock
       }
     };
-    const deleteBookReturn = {
+    const deletedBookMock = {
       uuid: uuidv4(),
       name: chance.sentence(),
       releaseDate: Date.now(),
       authorName: chance.name()
     };
-    booksStub.deleteBook = sinon.stub().returns(deleteBookReturn);
+    const deleteResultsMock = Promise.resolve(deletedBookMock);
+    booksStub.deleteBook = sinon.stub().returns(deleteResultsMock);
 
     // run
     const response = await handlerMock.delete(eventMock);
@@ -37,7 +38,7 @@ describe('delete', () => {
     // test
     expect(response).to.not.be.empty;
     expect(response.statusCode).to.be.equal(200);
-    expect(response.body).to.be.eql(JSON.stringify(deleteBookReturn));
+    expect(response.body).to.be.eql(JSON.stringify(deletedBookMock));
     expect(booksStub.deleteBook.calledOnce).to.be.true;
   });
 
@@ -49,8 +50,8 @@ describe('delete', () => {
         bookUuid: uuidMock
       }
     };
-    const deleteBookReturn = undefined;
-    booksStub.deleteBook = sinon.stub().returns(deleteBookReturn);
+    const deleteResultMock = Promise.resolve(undefined);
+    booksStub.deleteBook = sinon.stub().returns(deleteResultMock);
 
     // run
     const response = await handlerMock.delete(eventMock);
@@ -73,7 +74,8 @@ describe('delete', () => {
         bookUuid: uuidMock
       }
     };
-    booksStub.deleteBook = sinon.stub().throws(new Error('oh noes!'));
+    const deleteResultMock = Promise.reject(new Error('oh noes!'));
+    booksStub.deleteBook = sinon.stub().returns(deleteResultMock);
 
     // run
     const response = await handlerMock.delete(eventMock);
