@@ -40,7 +40,7 @@
 - [ ] Create crud update function
 - [x]   - Create handler
 - [x]   - Create util
-- [ ]   - Create db adapter
+- [x]   - Create db adapter
 - [ ]   - Create route config
 - [ ]   - Create validation schema
 - [ ] Create authorize function
