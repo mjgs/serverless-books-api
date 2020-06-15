@@ -42,7 +42,7 @@
 - [x]   - Create util
 - [x]   - Create db adapter
 - [x]   - Create route config
-- [ ]   - Create validation schema
+- [x]   - Create validation schema
 - [ ] Create authorize function
 - [ ]   - add
 - [ ]   - delete

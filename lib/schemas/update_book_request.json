@@ -1,0 +1,24 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "title": "Update Book Schema",
+  "properties": {
+    "name": {
+      "title": "Name",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 150
+    },
+    "releaseDate": {
+      "type": "integer",
+      "title": "Release Date"
+    },
+    "authorName": {
+      "type": "string",
+      "title": "Author Name",
+      "minLength": 1,
+      "maxLength": 50
+    }
+  }
+}
