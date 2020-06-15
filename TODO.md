@@ -38,7 +38,7 @@
 - [x]   - Create db adapter
 - [x]   - Create route config
 - [ ] Create crud update function
-- [ ]   - Create handler
+- [x]   - Create handler
 - [ ]   - Create util
 - [ ]   - Create db adapter
 - [ ]   - Create route config
