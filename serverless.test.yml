@@ -96,3 +96,12 @@
     path: /books
   response:
     status: 200
+  
+- name: update book - empty body
+  endpoint:
+    method: POST
+    path: /book/qwertyuiop/update
+  response: 
+    status: 400
+    body:
+      message: 'Invalid request body'
