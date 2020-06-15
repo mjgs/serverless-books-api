@@ -39,7 +39,7 @@
 - [x]   - Create route config
 - [ ] Create crud update function
 - [x]   - Create handler
-- [ ]   - Create util
+- [x]   - Create util
 - [ ]   - Create db adapter
 - [ ]   - Create route config
 - [ ]   - Create validation schema

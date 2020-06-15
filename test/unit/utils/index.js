@@ -7,4 +7,5 @@ describe('utils', () => {
   require('./deleteBook.test.js');
   require('./getBook.test.js');
   require('./getAllBooks.test.js');
+  require('./updateBook.test.js');
 });
