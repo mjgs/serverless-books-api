@@ -21,20 +21,22 @@ const getAllBooksUtilMock = proxyquire('../../../lib/utils/getAllBooks', stubs);
 describe('getAllBooks', () => {
   it('should get all books', async () => {
     // setup
-    const bookMock1 = {
-      uuid: uuidv4(),
-      name: chance.sentence(),
-      releaseDate: Date.now(),
-      authorName: chance.name()
-    };
-    const bookMock2 = {
-      uuid: uuidv4(),
-      name: chance.sentence(),
-      releaseDate: Date.now(),
-      authorName: chance.name()
-    };
-    const bookListMock = [ bookMock1, bookMock2 ];
-    dbAdapterStub.getAll = sinon.stub().returns(Promise.resolve(bookListMock));
+    const bookListMock = [
+      {
+        uuid: uuidv4(),
+        name: chance.sentence(),
+        releaseDate: Date.now(),
+        authorName: chance.name()
+      },
+      {
+        uuid: uuidv4(),
+        name: chance.sentence(),
+        releaseDate: Date.now(),
+        authorName: chance.name()
+      }
+    ];
+    const getAllResultMock = Promise.resolve(bookListMock);
+    dbAdapterStub.getAll = sinon.stub().returns(getAllResultMock);
 
     // run
     const promise = getAllBooksUtilMock();
@@ -49,7 +51,8 @@ describe('getAllBooks', () => {
 
   it('should return an error', async () => {
     // setup
-    dbAdapterStub.getAll = sinon.stub().returns(Promise.reject(new Error('oh noes!')));
+    const getAllResultMock = Promise.reject(new Error('oh noes!'));
+    dbAdapterStub.getAll = sinon.stub().returns(getAllResultMock);
     const consoleErrorStub = sinon.stub(console, 'error');
 
     // run

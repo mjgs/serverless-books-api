@@ -33,11 +33,11 @@ describe('get', () => {
       releaseDate: Date.now(),
       authorName: chance.name()
     };
-    const addResultMock = {
+    const getResultMock = Promise.resolve({
       Table: tableNameMock,
       Item: bookMock
-    };
-    const promiseStub = sinon.stub().returns(addResultMock);
+    });
+    const promiseStub = sinon.stub().returns(getResultMock);
     const getStub = sinon.stub().returns({
       promise: promiseStub
     });
@@ -65,8 +65,10 @@ describe('get', () => {
     // setup
     const tableNameMock = chance.word();
     const uuidMock = uuidv4();
+    const getResultMock = Promise.reject(new Error('oh noes!'));
+    const promiseStub = sinon.stub().returns(getResultMock);
     const getStub = sinon.stub().returns({
-      promise: () => Promise.reject(new Error('oh noes!'))
+      promise: promiseStub
     });
     awsSdkStub.DynamoDB = {
       DocumentClient: function() {

@@ -23,15 +23,15 @@ describe('delete', () => {
     // setup
     const tableNameMock = chance.word();
     const uuidMock = uuidv4();
-    const bookMock = {
+    const deletedBookMock = {
       uuid: uuidMock,
       name: chance.sentence(),
       releaseDate: Date.now(),
       authorName: chance.name()
     };
-    const deleteResultMock = {
-      Attributes: bookMock
-    };
+    const deleteResultMock = Promise.resolve({
+      Attributes: deletedBookMock
+    });
     const promiseStub = sinon.stub().returns(deleteResultMock);
     const deleteStub = sinon.stub().returns({
       promise: promiseStub
@@ -50,7 +50,7 @@ describe('delete', () => {
     // test
     return expect(promise).to.be.eventually.fulfilled
       .then((value) => {
-        expect(value).to.be.eql(bookMock);
+        expect(value).to.be.eql(deletedBookMock);
         expect(deleteStub.calledOnce).to.be.true;
         expect(promiseStub.calledOnce).to.be.true;
       });
@@ -60,7 +60,8 @@ describe('delete', () => {
     // setup
     const tableNameMock = chance.word();
     const uuidMock = uuidv4();
-    const promiseStub = sinon.stub().returns(Promise.reject(new Error('oh noes!')));
+    const deleteResultMock = Promise.reject(new Error('oh noes!'));
+    const promiseStub = sinon.stub().returns(deleteResultMock);
     const deleteStub = sinon.stub().returns({
       promise: promiseStub
     });

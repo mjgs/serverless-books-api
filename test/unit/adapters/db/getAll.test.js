@@ -35,9 +35,9 @@ describe('getAll', () => {
       authorName: chance.name()
     };
     const bookListMock = [ bookMock1, bookMock2 ];
-    const getAllResultsMock = {
+    const getAllResultsMock = Promise.resolve({
       Items: bookListMock
-    };
+    });
     const promiseStub = sinon.stub().returns(getAllResultsMock);
     const scanStub = sinon.stub().returns({
       promise: promiseStub
@@ -65,7 +65,8 @@ describe('getAll', () => {
   it('should return an error', async () => {
     // setup
     const tableNameMock = chance.word();
-    const promiseStub = sinon.stub().returns(Promise.reject(new Error('oh noes!')));
+    const getAllResultMock = Promise.reject(new Error('oh noes!'));
+    const promiseStub = sinon.stub().returns(getAllResultMock);
     const scanStub = sinon.stub().returns({
       promise: promiseStub
     });

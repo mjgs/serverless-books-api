@@ -21,21 +21,22 @@ const getBookUtilMock = proxyquire('../../../lib/utils/getBook', stubs);
 describe('getBook', () => {
   it('should get a book', async () => {
     // setup
-    const getResultMock = {
+    const getBookMock = {
       uuid: uuidv4(),
       name: chance.sentence(),
       releaseDate: Date.now(),
       authorName: chance.name()
     };
-    dbAdapterStub.get = sinon.stub().returns(Promise.resolve(getResultMock));
+    const getResultMock = Promise.resolve(getBookMock);
+    dbAdapterStub.get = sinon.stub().returns(getResultMock);
 
     // run
-    const promise = getBookUtilMock(getResultMock.uuid);
+    const promise = getBookUtilMock(getBookMock.uuid);
 
     // test
     return expect(promise).to.eventually.be.fulfilled
       .then((value) => {
-        expect(value).to.be.eql(getResultMock);
+        expect(value).to.be.eql(getBookMock);
         expect(dbAdapterStub.get.calledOnce).to.be.true;
       });
   });
@@ -43,7 +44,8 @@ describe('getBook', () => {
   it('should return a 500 error', async () => {
     // setup
     const uuidMock = uuidv4();
-    dbAdapterStub.get = sinon.stub().returns(Promise.reject(new Error('oh noes!')));
+    const getResultMock = Promise.reject(new Error('oh noes!'));
+    dbAdapterStub.get = sinon.stub().returns(getResultMock);
     const consoleErrorStub = sinon.stub(console, 'error');
 
     // run
