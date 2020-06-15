@@ -106,18 +106,6 @@ For interactive debugging in VSCode, add the following to .vscode/launch.json:
       ],
       "port": 9229,
       "outputCapture": "std"
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "npm run debug:test:integration",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": [
-        "run-script",
-        "debug:test:integration"
-      ],
-      "port": 9229,
-      "outputCapture": "std"
     }
   ]
 }
@@ -126,7 +114,7 @@ For interactive debugging in VSCode, add the following to .vscode/launch.json:
 Set some breakpoints in your code (handlers or tests files), then
 
 1. Click the Run button
-2. Select the run configuration from the drop down menu (debug:start or debug:test:unit or debug:test:integration)
+2. Select the run configuration from the drop down menu (debug:start or debug:test:unit)
 3. Click the play button next to the drop down menu
 4. The debugger should then run the code and stop at your first breakpoint
 
