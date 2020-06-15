@@ -41,7 +41,7 @@
 - [x]   - Create handler
 - [x]   - Create util
 - [x]   - Create db adapter
-- [ ]   - Create route config
+- [x]   - Create route config
 - [ ]   - Create validation schema
 - [ ] Create authorize function
 - [ ]   - add
