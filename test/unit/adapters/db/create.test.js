@@ -30,10 +30,11 @@ describe('create', () => {
       authorName: chance.name()
     };
     const uuidMock = uuidv4();
-    const createResultMock = {
+    const createdBookMock = {
       uuid: uuidMock,
       ...paramsMock
     };
+    const createResultMock = Promise.resolve(createdBookMock);
     const promiseStub = sinon.stub().returns(createResultMock);
     const createStub = sinon.stub().returns({
       promise: promiseStub
@@ -53,7 +54,7 @@ describe('create', () => {
     // test
     return expect(promise).to.eventually.be.fulfilled
       .then((value) => {
-        expect(value).to.be.eql(createResultMock);
+        expect(value).to.be.eql(createdBookMock);
         expect(createStub.calledOnce).to.be.true;
         expect(promiseStub.calledOnce).to.be.true;
       });
@@ -68,7 +69,8 @@ describe('create', () => {
       authorName: chance.name()
     };
     const uuidMock = uuidv4();
-    const promiseStub = sinon.stub().returns(Promise.reject(new Error('oh noes!')));
+    const createResultMock = Promise.reject(new Error('oh noes!'));
+    const promiseStub = sinon.stub().returns(createResultMock);
     const createStub = sinon.stub().returns({
       promise: promiseStub
     });

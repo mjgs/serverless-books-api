@@ -18,21 +18,19 @@ describe('get', () => {
   it('should get a book', async () => {
     // setup
     const uuidMock = uuidv4();
-    const nameMock = chance.sentence();
-    const releaseDateMock = Date.now();
-    const authorNameMock = chance.name();
     const eventMock = {
       pathParameters: {
         bookUuid: uuidMock
       }
     };
-    const getBookReturn = {
+    const getBookMock = {
       uuid: uuidMock,
-      name: nameMock,
-      releaseDate: releaseDateMock,
-      authorName: authorNameMock
+      name: chance.sentence(),
+      releaseDate: Date.now(),
+      authorName: chance.name()
     };
-    booksStub.getBook = sinon.stub().returns(getBookReturn);
+    const getResultMock = Promise.resolve(Object.assign({}, getBookMock));
+    booksStub.getBook = sinon.stub().returns(getResultMock);
 
     // run
     const response = await handlerMock.get(eventMock);
@@ -40,7 +38,7 @@ describe('get', () => {
     // test
     expect(response).to.not.be.empty;
     expect(response.statusCode).to.be.equal(200);
-    expect(response.body).to.be.eql(JSON.stringify(getBookReturn));
+    expect(response.body).to.be.eql(JSON.stringify(getBookMock));
     expect(booksStub.getBook.calledOnce).to.be.true;
   });
 
@@ -52,8 +50,8 @@ describe('get', () => {
         bookUuid: uuidMock
       }
     };
-    const getBookReturn = undefined;
-    booksStub.getBook = sinon.stub().returns(getBookReturn);
+    const getResultMock = Promise.resolve(undefined);
+    booksStub.getBook = sinon.stub().returns(getResultMock);
 
     // run
     const response = await handlerMock.get(eventMock);
@@ -75,7 +73,8 @@ describe('get', () => {
         bookUuid: uuidMock
       }
     };
-    booksStub.getBook = sinon.stub().returns(Promise.reject(new Error('oh noes!')));
+    const getResultMock = Promise.reject(new Error('oh noes!'));
+    booksStub.getBook = sinon.stub().returns(getResultMock);
 
     // run
     const response = await handlerMock.get(eventMock);

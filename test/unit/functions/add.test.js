@@ -17,16 +17,18 @@ const handlerMock = proxyquire('../../../lib/functions/add', stubs);
 describe('add', () => {
   it('should create a book', async () => {
     // setup
+    const paramsMock = {
+      name: chance.sentence(),
+      releaseDate: Date.now(),
+      authorName: chance.name()
+    };
     const eventMock = {
-      body: JSON.stringify({
-        name: chance.sentence(),
-        releaseDate: Date.now(),
-        authorName: chance.name()
-      })
+      body: JSON.stringify(paramsMock)
     };
     const uuidMock = uuidv4();
-    const bookRecordMock = Object.assign(JSON.parse(eventMock.body), { uuid: uuidMock });
-    booksUtilStub.addBook = sinon.stub().returns(bookRecordMock);
+    const addedBookMock = Object.assign(paramsMock, { uuid: uuidMock });
+    const addResultMock = Promise.resolve(addedBookMock);
+    booksUtilStub.addBook = sinon.stub().returns(addResultMock);
 
     // run
     const response = await handlerMock.add(eventMock);
@@ -34,7 +36,7 @@ describe('add', () => {
     // test
     expect(response).to.not.be.empty;
     expect(response.statusCode).to.be.equal(201);
-    expect(response.body).to.be.equal(JSON.stringify(bookRecordMock));
+    expect(response.body).to.be.equal(JSON.stringify(addedBookMock));
     expect(booksUtilStub.addBook.calledOnce).to.be.true;
   });
 
@@ -43,7 +45,8 @@ describe('add', () => {
     const eventMock = {
       body: JSON.stringify({})
     };
-    booksUtilStub.addBook = sinon.stub().returns(Promise.reject(new Error('oh noes!')));
+    const addResultMock = Promise.reject(new Error('oh noes!'));
+    booksUtilStub.addBook = sinon.stub().returns(addResultMock);
 
     // run
     const response = await handlerMock.add(eventMock);

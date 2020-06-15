@@ -22,13 +22,14 @@ describe('deleteBook', () => {
   it('should delete a book', async () => {
     // setup
     const uuidMock = uuidv4();
-    const deletedResultMock = {
+    const deletedBookMock = {
       uuid: uuidMock,
       name: chance.sentence(),
       releaseDate: Date.now(),
       authorName: chance.name()
     };
-    dbAdapterStub.delete = sinon.stub().returns(Promise.resolve(deletedResultMock));
+    const deleteResultMock = Promise.resolve(deletedBookMock);
+    dbAdapterStub.delete = sinon.stub().returns(deleteResultMock);
 
     // run
     const promise = deleteBookUtilMock(uuidMock);
@@ -36,7 +37,7 @@ describe('deleteBook', () => {
     // test
     return expect(promise).to.eventually.be.fulfilled
       .then((value) => {
-        expect(value).to.be.eql(deletedResultMock);
+        expect(value).to.be.eql(deletedBookMock);
         expect(dbAdapterStub.delete.calledOnce).to.be.true;
       });
   });
@@ -44,7 +45,8 @@ describe('deleteBook', () => {
   it('should return an error', async () => {
     // setup
     const uuidMock = uuidv4();
-    dbAdapterStub.delete = sinon.stub().returns(Promise.reject(new Error('oh noes!')));
+    const deleteResultMock = Promise.reject(new Error('oh noes!'));
+    dbAdapterStub.delete = sinon.stub().returns(deleteResultMock);
     const consoleErrorStub = sinon.stub(console, 'error');
 
     // run

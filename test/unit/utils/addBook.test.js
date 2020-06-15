@@ -29,7 +29,8 @@ describe('addBook', () => {
       releaseDate: Date.now(),
       authorName: chance.name()
     };
-    const createResultMock = Object.assign(paramsMock, { uuid: uuidMock });
+    const addedBookMock = Object.assign(paramsMock, { uuid: uuidMock });
+    const createResultMock = Promise.resolve(addedBookMock);
     dbAdapterStub.create = sinon.stub().returns(createResultMock);
 
     // run
@@ -38,7 +39,7 @@ describe('addBook', () => {
     // test
     return expect(result).to.eventually.be.fulfilled
       .then((value) => {
-        expect(value).to.be.eql(createResultMock);
+        expect(value).to.be.eql(addedBookMock);
         expect(dbAdapterStub.create.calledOnce).to.be.true;
       });
   });
@@ -51,7 +52,8 @@ describe('addBook', () => {
       releaseDate: Date.now(),
       authorName: chance.name()
     };
-    dbAdapterStub.create = sinon.stub().throws(new Error('oh noes!'));
+    const addResultMock = Promise.reject(new Error('oh noes!'));
+    dbAdapterStub.create = sinon.stub().returns(addResultMock);
     uuidStub.v4 = sinon.stub().returns(uuidMock);
     const consoleErrorStub = sinon.stub(console, 'error');
 
