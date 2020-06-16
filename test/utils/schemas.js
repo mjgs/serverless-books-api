@@ -8,3 +8,10 @@ module.exports.notFoundSchema = Joi.object().keys({
   status: Joi.number().valid(404).required(),
   message: Joi.string().valid('Not found').required()
 });
+
+module.exports.bookSchema = Joi.object().keys({
+  uuid: Joi.string().required(),
+  name: Joi.string().required(),
+  releaseDate: Joi.number().required(),
+  authorName: Joi.string().required()
+});

@@ -14,7 +14,7 @@ const apiRootUrl = process.env.API_BASE_URL;
 
 debug(`apiRootUrl: ${apiRootUrl}`);
 
-const { invalidRequestBodySchema } = require('../utils/schemas');
+const { invalidRequestBodySchema, bookSchema } = require('../utils/schemas');
 
 describe('creaateBook', function() {
   this.timeout(process.env.TEST_TIMEOUT || 10000);
@@ -40,10 +40,11 @@ describe('creaateBook', function() {
         debug(`res.data: ${JSON.stringify(res.data, 0, 2)}`);
 
         expect(res.status).to.be.equal(201);
+        Joi.assert(res.data, bookSchema);
         Joi.assert(res.data, Joi.object().keys({
           uuid: Joi.string().required(),
           name: Joi.string().valid(requestOptions.data.name).required(),
-          releaseDate: Joi.string().valid(requestOptions.data.releaseDate).required(),
+          releaseDate: Joi.number().valid(requestOptions.data.releaseDate).required(),
           authorName: Joi.string().valid(requestOptions.data.authorName).required()
         }));
       });
