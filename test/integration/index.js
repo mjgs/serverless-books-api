@@ -3,6 +3,7 @@
 'use strict';
 
 describe('integration', () => {
-  require('./createBook');
-  require('./deleteBook');
+  require('./createBook.test.js');
+  require('./deleteBook.test.js');
+  require('./getBook.test.js');
 });
