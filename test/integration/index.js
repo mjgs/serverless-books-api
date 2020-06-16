@@ -4,4 +4,5 @@
 
 describe('integration', () => {
   require('./createBook');
+  require('./deleteBook');
 });
