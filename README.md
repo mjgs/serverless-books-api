@@ -47,7 +47,9 @@ POST | http://localhost:3000/dev/book/add
 
 ## Deploying
 
-Ensure you have configured serverless with the [correct aws access rights](https://github.com/serverless/serverless/blob/master/docs/providers/aws/guide/credentials.md). Then run:
+Ensure you have configured serverless with the [correct aws access rights](https://github.com/serverless/serverless/blob/master/docs/providers/aws/guide/credentials.md).
+
+Then run:
 
 ```
 serverless deploy
@@ -55,15 +57,19 @@ serverless deploy
 
 ## Tests
 
+Create a test env config file:
+
+```
+echo "export API_BASE_URL=[ADD YOUR BASE URL HERE]" > .env
+```
+
 To run both unit and integration tests:
 
 ```
 npm test
 ```
 
-Before integration tests are run, the service will be deployed to AWS, so you have to have serverless cli correctly configured. See [Deploying](#deploying).
-
-Also for the integration tests to run correctly you will have to add the project to your serverless website account. You will be prompted if it's not setup when you run the tests the first time, so follow the instructions and then re-run the tests.
+Update API_BASE_URL to run the integration tests against different versions of the code (i.e. local / dev / production etc).
 
 You can run individual test sets like so:
 
@@ -74,49 +80,20 @@ npm run test:integration
 
 ## Debugging
 
-For interactive debugging in VSCode, add the following to .vscode/launch.json:
+For interactive debugging in VSCode:
+
+1. Create a VSCode run config in your project root (.vscode/launch.json) - [see sample](https://github.com/mjgs/serverless-books-api/blob/master/launch.json.sample)
+2. Set some breakpoints in the code or tests files
+3. Click the Run button
+4. Select a run configuration from the drop down menu
+5. Click the play button next to the drop down menu
+6. The debugger will then run the code and stop at the first breakpoint you set
+
+For additinal logging set the following environment variable:
 
 ```
-{
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "npm run debug:start",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": [
-        "run-script",
-        "debug:start"
-      ],
-      "port": 9229,
-      "outputCapture": "std"
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "npm run debug:test:unit",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": [
-        "run-script",
-        "debug:test:unit"
-      ],
-      "port": 9229,
-      "outputCapture": "std"
-    }
-  ]
-}
+DEBUG=booksapi:*
 ```
-
-Set some breakpoints in your code (handlers or tests files), then
-
-1. Click the Run button
-2. Select the run configuration from the drop down menu (debug:start or debug:test:unit)
-3. Click the play button next to the drop down menu
-4. The debugger should then run the code and stop at your first breakpoint
 
 ## Todo
 
