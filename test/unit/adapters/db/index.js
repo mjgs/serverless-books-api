@@ -6,4 +6,5 @@ describe('db', () => {
   require('./delete.test.js');
   require('./get.test.js');
   require('./getAll.test.js');
+  require('./update.test.js');
 });

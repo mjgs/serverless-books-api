@@ -38,11 +38,11 @@
 - [x]   - Create db adapter
 - [x]   - Create route config
 - [ ] Create crud update function
-- [ ]   - Create handler
-- [ ]   - Create util
-- [ ]   - Create db adapter
-- [ ]   - Create route config
-- [ ]   - Create validation schema
+- [x]   - Create handler
+- [x]   - Create util
+- [x]   - Create db adapter
+- [x]   - Create route config
+- [x]   - Create validation schema
 - [ ] Create authorize function
 - [ ]   - add
 - [ ]   - delete

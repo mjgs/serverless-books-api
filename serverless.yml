@@ -68,6 +68,17 @@ functions:
           cors: true
           path: /books
 
+  updateBook:
+    handler: lib/functions/update.update
+    events:
+      - http:
+          method: post
+          cors: true
+          path: /book/{bookUuid}/update
+          request:
+            schema:
+              application/json: ${file(lib/schemas/update_book_request.json)}
+
 resources:
   Resources:
     booksTable:
