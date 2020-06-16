@@ -37,7 +37,7 @@
 - [x]   - Create util
 - [x]   - Create db adapter
 - [x]   - Create route config
-- [ ] Create crud update function
+- [x] [Create crud update function](https://github.com/mjgs/serverless-books-api/pull/42)
 - [x]   - Create handler
 - [x]   - Create util
 - [x]   - Create db adapter
