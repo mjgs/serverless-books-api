@@ -43,6 +43,14 @@
 - [x]   - Create db adapter
 - [x]   - Create route config
 - [x]   - Create validation schema
+- [ ] Better integration tests
+- [ ]  - Setup basic environment
+- [ ]  - Add tests for routes
+- [ ]    - addBook
+- [ ]    - deleteBook
+- [ ]    - getBook
+- [ ]    - getAllBooks
+- [ ]    - updateBook
 - [ ] Create authorize function
 - [ ]   - add
 - [ ]   - delete
