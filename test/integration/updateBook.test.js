@@ -16,7 +16,7 @@ debug(`apiRootUrl: ${apiRootUrl}`);
 
 const { notFoundSchema } = require('../utils/schemas');
 
-describe.only('updateBook', function() {
+describe('updateBook', function() {
   this.timeout(process.env.TEST_TIMEOUT || 10000);
 
   it('should update a book', async function() {

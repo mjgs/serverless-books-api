@@ -37,7 +37,7 @@
   "scripts": {
     "coverage": "nyc --reporter=lcov --reporter=text-summary npm run test:unit",
     "lint": "eslint --ignore-path .gitignore .",
-    "start": "./node_modules/.bin/serverless offline -s dev",
+    "start": "./node_modules/.bin/serverless offline --printOutput -s dev",
     "test": "npm run test:unit && npm run test:integration",
     "test:unit": "./node_modules/.bin/mocha test/unit/**/index.js",
     "test:integration": ". .env; ./node_modules/.bin/mocha test/integration/index.js",
