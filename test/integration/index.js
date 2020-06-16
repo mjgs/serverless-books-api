@@ -6,4 +6,5 @@ describe('integration', () => {
   require('./createBook.test.js');
   require('./deleteBook.test.js');
   require('./getBook.test.js');
+  require('./getAllBooks.test.js');
 });
