@@ -25,13 +25,6 @@ provider:
         - arn:aws:dynamodb:#{AWS::Region}:#{AWS::AccountId}:table/${self:custom.db.booksTable}/index/uuid
 
 functions:
-  hello:
-    handler: lib/functions/hello.hello
-    events:
-      - http:
-          method: get
-          path: /hello
-
   addBook:
     handler: lib/functions/add.add
     events:
