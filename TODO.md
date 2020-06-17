@@ -43,7 +43,7 @@
 - [x]   - Create db adapter
 - [x]   - Create route config
 - [x]   - Create validation schema
-- [x] Better integration tests
+- [x] [Better integration tests](https://github.com/mjgs/serverless-books-api/pull/44)
 - [x]  - Setup basic environment
 - [x]  - Add tests for routes
 - [x]    - addBook
