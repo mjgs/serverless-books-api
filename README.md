@@ -33,7 +33,9 @@ Implements a Books API for a Library, intended to be run on AWS using serverless
 │   ├── schemas      - Used by cloud infrastructure to validate request data
 │   └── utils        - Shared utility functions
 ├── serverless.yml   - Cloud deployment configuration
+├── TODO.md          - Task list used to build the project
 └── test             - Tests
+
 ```
 
 ## Development
