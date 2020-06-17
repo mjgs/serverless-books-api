@@ -11,7 +11,6 @@ provider:
   region: us-east-1
   environment:
     BOOKS_TABLE: ${self:custom.db.booksTable}
-    DEBUG: booksapi:*
   iamRoleStatements:
     - Effect: Allow
       Action:
