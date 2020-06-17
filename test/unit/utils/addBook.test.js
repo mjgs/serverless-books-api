@@ -20,8 +20,8 @@ const stubs = {
 };
 const addBookUtilMock = proxyquire('../../../lib/utils/addBook', stubs);
 
-describe('addBook', () => {
-  it('should add a book', async () => {
+describe('addBook', function() {
+  it('should add a book', async function() {
     // setup
     const uuidMock = uuidv4();
     const paramsMock = {
@@ -44,7 +44,7 @@ describe('addBook', () => {
       });
   });
 
-  it('should return an error', async () => {
+  it('should return an error', async function() {
     // setup
     const uuidMock = uuidv4();
     const paramsMock = {
@@ -70,7 +70,7 @@ describe('addBook', () => {
       });
   });
 
-  it('should return a params bad argument error', async () => {
+  it('should return a params bad argument error', async function() {
     // setup
     const paramsMock = undefined;
 

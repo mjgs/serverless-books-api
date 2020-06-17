@@ -18,8 +18,8 @@ const stubs = {
 };
 const getAllDbAdapterMock = proxyquire('../../../../lib/adapters/db/getAll', stubs);
 
-describe('getAll', () => {
-  it('should get all books', async () => {
+describe('getAll', function() {
+  it('should get all books', async function() {
     // setup
     const tableNameMock = chance.word();
     const bookMock1 = {
@@ -62,7 +62,7 @@ describe('getAll', () => {
       });
   });
 
-  it('should return an error', async () => {
+  it('should return an error', async function() {
     // setup
     const tableNameMock = chance.word();
     const getAllResultMock = Promise.reject(new Error('oh noes!'));
@@ -92,7 +92,7 @@ describe('getAll', () => {
       });
   });
 
-  it('should return a tableName bad argument error', async () => {
+  it('should return a tableName bad argument error', async function() {
     // setup
     const tableNameMock = undefined;
 

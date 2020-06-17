@@ -18,8 +18,8 @@ const stubs = {
 };
 const deleteDbAdapterMock = proxyquire('../../../../lib/adapters/db/delete', stubs);
 
-describe('delete', () => {
-  it('should delete a book', async () => {
+describe('delete', function() {
+  it('should delete a book', async function() {
     // setup
     const tableNameMock = chance.word();
     const uuidMock = uuidv4();
@@ -56,7 +56,7 @@ describe('delete', () => {
       });
   });
 
-  it('should return an error', async () => {
+  it('should return an error', async function() {
     // setup
     const tableNameMock = chance.word();
     const uuidMock = uuidv4();
@@ -89,7 +89,7 @@ describe('delete', () => {
       });
   });
 
-  it('should return a tableName bad argument error', async () => {
+  it('should return a tableName bad argument error', async function() {
     // setup
     const tableNameMock = undefined;
     const uuidMock = '';
@@ -105,7 +105,7 @@ describe('delete', () => {
       });
   });
 
-  it('should return a uuid bad argument error', async () => {
+  it('should return a uuid bad argument error', async function() {
     // setup
     const tableNameMock = chance.word();
     const uuidMock = undefined;

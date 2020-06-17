@@ -14,8 +14,8 @@ const stubs = {
 };
 const updateDbAdapterMock = proxyquire('../../../../lib/adapters/db/update', stubs);
 
-describe('update', () => {
-  it('should update a book', async () => {
+describe('update', function() {
+  it('should update a book', async function() {
     // setup
     const tableNameMock = chance.word();
     const paramsMock = {
@@ -52,7 +52,7 @@ describe('update', () => {
       });
   });
 
-  it('should return an error', async () => {
+  it('should return an error', async function() {
     // setup
     const tableNameMock = chance.word();
     const paramsMock = {
@@ -90,7 +90,7 @@ describe('update', () => {
       });
   });
 
-  it('should return a tableName bad argument error', async () => {
+  it('should return a tableName bad argument error', async function() {
     // setup
     const tableNameMock = undefined;
     const uuidMock = uuidv4();
@@ -107,7 +107,7 @@ describe('update', () => {
       });
   });
 
-  it('should return a uuid bad argument error', async () => {
+  it('should return a uuid bad argument error', async function() {
     // setup
     const tableNameMock = chance.word();
     const uuidMock = undefined;
@@ -124,7 +124,7 @@ describe('update', () => {
       });
   });
 
-  it('should return a params bad argument error', async () => {
+  it('should return a params bad argument error', async function() {
     // setup
     const tableNameMock = chance.word();
     const uuidMock = uuidv4();

@@ -14,8 +14,8 @@ const stubs = {
 };
 const handlerMock = proxyquire('../../../lib/functions/update', stubs);
 
-describe('update', () => {
-  it('should update a book', async () => {
+describe('update', function() {
+  it('should update a book', async function() {
     // setup
     const uuidMock = uuidv4();
     const eventMock = {
@@ -43,7 +43,7 @@ describe('update', () => {
     expect(booksStub.updateBook.calledOnce).to.be.true;
   });
 
-  it('should return a 404 error', async () => {
+  it('should return a 404 error', async function() {
     // setup
     const uuidMock = uuidv4();
     const eventMock = {
@@ -68,7 +68,7 @@ describe('update', () => {
     expect(booksStub.updateBook.calledOnce).to.be.true;
   });
 
-  it('should throw a 500 error', async () => {
+  it('should throw a 500 error', async function() {
     // setup
     const uuidMock = uuidv4();
     const eventMock = {

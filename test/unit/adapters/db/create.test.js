@@ -20,8 +20,8 @@ const stubs = {
 };
 const createDbAdapterMock = proxyquire('../../../../lib/adapters/db/create', stubs);
 
-describe('create', () => {
-  it('should create a book', async () => {
+describe('create', function() {
+  it('should create a book', async function() {
     // setup
     const tableNameMock = chance.word();
     const paramsMock = {
@@ -60,7 +60,7 @@ describe('create', () => {
       });
   });
 
-  it('should return an error', async () => {
+  it('should return an error', async function() {
     // setup
     const tableNameMock = chance.word();
     const paramsMock = {
@@ -98,7 +98,7 @@ describe('create', () => {
       });
   });
 
-  it('should return a tableName bad argument error', async () => {
+  it('should return a tableName bad argument error', async function() {
     // setup
     const tableNameMock = undefined;
     const paramsMock = {};
@@ -114,7 +114,7 @@ describe('create', () => {
       });
   });
 
-  it('should return a params bad argument error', async () => {
+  it('should return a params bad argument error', async function() {
     // setup
     const tableNameMock = chance.word();
     const paramsMock = undefined;

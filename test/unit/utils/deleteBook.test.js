@@ -18,8 +18,8 @@ const stubs = {
 };
 const deleteBookUtilMock = proxyquire('../../../lib/utils/deleteBook', stubs);
 
-describe('deleteBook', () => {
-  it('should delete a book', async () => {
+describe('deleteBook', function() {
+  it('should delete a book', async function() {
     // setup
     const uuidMock = uuidv4();
     const deletedBookMock = {
@@ -42,7 +42,7 @@ describe('deleteBook', () => {
       });
   });
 
-  it('should return an error', async () => {
+  it('should return an error', async function() {
     // setup
     const uuidMock = uuidv4();
     const deleteResultMock = Promise.reject(new Error('oh noes!'));
@@ -63,7 +63,7 @@ describe('deleteBook', () => {
       });
   });
 
-  it('should return a uuid bad argument error', async () => {
+  it('should return a uuid bad argument error', async function() {
     // setup
     const uuidMock = undefined;
 
