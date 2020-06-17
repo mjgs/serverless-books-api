@@ -99,6 +99,10 @@ DEBUG=booksapi:*
 
 See the [TODO](https://github.com/mjgs/serverless-books-api/blob/master/TODO.md) page.
 
+## Possible improvements
+
+- A way to run both integration tests and lambda code in the debugger at the same time
+
 ## Credits
 
 I found the following resources helpfull while building this repo:
