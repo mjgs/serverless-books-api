@@ -51,7 +51,3 @@
 - [x]    - getBook
 - [x]    - getAllBooks
 - [x]    - updateBook
-- [ ] Create authorize function
-- [ ]   - add
-- [ ]   - delete
-- [ ]   - update
