@@ -39,7 +39,6 @@ npm start
 The list of the available endpoints will be printed to the console:
 
 ```
-GET  | http://localhost:3000/dev/hello
 POST | http://localhost:3000/dev/book/add
 POST | http://localhost:3000/dev/book/{bookUuid}/delete
 GET  | http://localhost:3000/dev/book/{bookUuid}
