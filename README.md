@@ -90,7 +90,7 @@ For interactive debugging in VSCode:
 5. Click the play button next to the drop down menu
 6. The debugger will then run the code and stop at the first breakpoint you set
 
-For additinal logging set the following environment variable:
+For additional logging set the following environment variable:
 
 ```
 DEBUG=booksapi:*
