@@ -15,12 +15,12 @@ Implements a Books API for a Library, intended to be run on AWS using serverless
 
 ## Book model
 
-| Parameter | Type |
-| ---- | ------ |
-| uuid | string |
-| name | string |
-| releaseDate | integer (timestamp) |
-| authorName | string |
+| Parameter | Type | Notes
+| :--- | :---: | :--- |
+| uuid | string | |
+| name | string | |
+| releaseDate | integer | timestamp |
+| authorName | string | |
 
 ## Project structure
 
