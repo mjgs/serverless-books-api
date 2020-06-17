@@ -11,7 +11,6 @@ Implements a Books API for a Library, intended to be run on AWS using serverless
 
 ## Assumptions
 
-- Authorization is only required for routes that modify data
 - Correctly configured serverless cli installation
 - AWS account with the required priveledges
 
@@ -102,6 +101,7 @@ See the [TODO](https://github.com/mjgs/serverless-books-api/blob/master/TODO.md)
 ## Possible improvements
 
 - A way to run both integration tests and lambda code in the debugger at the same time
+- Add an authorize function on routes that modify data
 
 ## Credits
 
