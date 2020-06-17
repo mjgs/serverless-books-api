@@ -13,6 +13,15 @@ Implements a Books API for a Library, intended to be run on AWS using serverless
 - Correctly configured serverless cli installation
 - AWS account with the required priveledges
 
+## Book model
+
+| Parameter | Type |
+| ---- | ------ |
+| uuid | string |
+| name | string |
+| releaseDate | integer (timestamp) |
+| authorName | string |
+
 ## Project structure
 
 ```
