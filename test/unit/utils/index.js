@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-expressions */
 'use strict';
 
-describe('utils', () => {
+describe('utils', function() {
   require('./addBook.test.js');
   require('./deleteBook.test.js');
   require('./getBook.test.js');

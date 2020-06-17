@@ -18,8 +18,8 @@ const stubs = {
 };
 const getBookUtilMock = proxyquire('../../../lib/utils/getBook', stubs);
 
-describe('getBook', () => {
-  it('should get a book', async () => {
+describe('getBook', function() {
+  it('should get a book', async function() {
     // setup
     const getBookMock = {
       uuid: uuidv4(),
@@ -41,7 +41,7 @@ describe('getBook', () => {
       });
   });
 
-  it('should return a 500 error', async () => {
+  it('should return a 500 error', async function() {
     // setup
     const uuidMock = uuidv4();
     const getResultMock = Promise.reject(new Error('oh noes!'));
@@ -62,7 +62,7 @@ describe('getBook', () => {
       });
   });
 
-  it('should return a uuid bad argument error', async () => {
+  it('should return a uuid bad argument error', async function() {
     // setup
     const uuidMock = undefined;
 

@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 /* eslint-disable no-unused-expressions */
 
-describe('adapters', () => {
+describe('adapters', function() {
   require('./db');
 });

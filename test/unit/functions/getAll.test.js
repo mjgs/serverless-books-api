@@ -14,8 +14,8 @@ const stubs = {
 };
 const handlerMock = proxyquire('../../../lib/functions/getAll', stubs);
 
-describe('getAll', () => {
-  it('should get all books', async () => {
+describe('getAll', function() {
+  it('should get all books', async function() {
     // setup
     const eventMock = {};
     const getAllBooksMock = [
@@ -45,7 +45,7 @@ describe('getAll', () => {
     expect(booksStub.getAllBooks.calledOnce).to.be.true;
   });
 
-  it('should return a 500 error', async () => {
+  it('should return a 500 error', async function() {
     // setup
     const eventMock = {};
     const getAllResult = Promise.reject(new Error('oh noes!'));

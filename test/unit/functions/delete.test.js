@@ -14,8 +14,8 @@ const stubs = {
 };
 const handlerMock = proxyquire('../../../lib/functions/delete', stubs);
 
-describe('delete', () => {
-  it('should delete a book', async () => {
+describe('delete', function() {
+  it('should delete a book', async function() {
     // setup
     const uuidMock = uuidv4();
     const eventMock = {
@@ -42,7 +42,7 @@ describe('delete', () => {
     expect(booksStub.deleteBook.calledOnce).to.be.true;
   });
 
-  it('should return a 404 error', async () => {
+  it('should return a 404 error', async function() {
     // setup
     const uuidMock = uuidv4();
     const eventMock = {
@@ -66,7 +66,7 @@ describe('delete', () => {
     expect(booksStub.deleteBook.calledOnce).to.be.true;
   });
 
-  it('should throw a 500 error', async () => {
+  it('should throw a 500 error', async function() {
     // setup
     const uuidMock = uuidv4();
     const eventMock = {

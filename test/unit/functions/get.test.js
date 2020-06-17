@@ -14,8 +14,8 @@ const stubs = {
 };
 const handlerMock = proxyquire('../../../lib/functions/get', stubs);
 
-describe('get', () => {
-  it('should get a book', async () => {
+describe('get', function() {
+  it('should get a book', async function() {
     // setup
     const uuidMock = uuidv4();
     const eventMock = {
@@ -42,7 +42,7 @@ describe('get', () => {
     expect(booksStub.getBook.calledOnce).to.be.true;
   });
 
-  it('should return a 404 error', async () => {
+  it('should return a 404 error', async function() {
     // setup
     const uuidMock = uuidv4();
     const eventMock = {
@@ -65,7 +65,7 @@ describe('get', () => {
     }));
   });
 
-  it('should return a 500 error', async () => {
+  it('should return a 500 error', async function() {
     // setup
     const uuidMock = uuidv4();
     const eventMock = {

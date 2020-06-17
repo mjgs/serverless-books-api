@@ -15,7 +15,7 @@ const stubs = {
 const handlerMock = proxyquire('../../../lib/functions/add', stubs);
 
 describe('add', () => {
-  it('should create a book', async () => {
+  it('should create a book', async function() {
     // setup
     const paramsMock = {
       name: chance.sentence(),
@@ -40,7 +40,7 @@ describe('add', () => {
     expect(booksUtilStub.addBook.calledOnce).to.be.true;
   });
 
-  it('should return a 500 error', async () => {
+  it('should return a 500 error', async function() {
     // setup
     const eventMock = {
       body: JSON.stringify({})

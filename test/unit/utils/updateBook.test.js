@@ -19,7 +19,7 @@ const stubs = {
 const updateBookUtilMock = proxyquire('../../../lib/utils/updateBook', stubs);
 
 describe('updateBook', () => {
-  it('should return a book object', async () => {
+  it('should return a book object', async function() {
     // setup
     const uuidMock = uuidv4();
     const paramsMock = {

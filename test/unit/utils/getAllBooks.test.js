@@ -18,8 +18,8 @@ const stubs = {
 };
 const getAllBooksUtilMock = proxyquire('../../../lib/utils/getAllBooks', stubs);
 
-describe('getAllBooks', () => {
-  it('should get all books', async () => {
+describe('getAllBooks', function() {
+  it('should get all books', async function() {
     // setup
     const bookListMock = [
       {
@@ -49,7 +49,7 @@ describe('getAllBooks', () => {
       });
   });
 
-  it('should return an error', async () => {
+  it('should return an error', async function() {
     // setup
     const getAllResultMock = Promise.reject(new Error('oh noes!'));
     dbAdapterStub.getAll = sinon.stub().returns(getAllResultMock);
