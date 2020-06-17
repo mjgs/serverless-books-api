@@ -6,12 +6,10 @@ Implements a Books API for a Library, intended to be run on AWS using serverless
 
 - Functions run on AWS Lambda
 - Data is stored in AWS DynamoDB
-- Includes a very simple token based authorization for operations that modify data
 - Uses domain driven design techniques with handlers/utilities/adapters layers
 
 ## Assumptions
 
-- Authorization is only required for routes that modify data
 - Correctly configured serverless cli installation
 - AWS account with the required priveledges
 
@@ -98,6 +96,11 @@ DEBUG=booksapi:*
 ## Todo
 
 See the [TODO](https://github.com/mjgs/serverless-books-api/blob/master/TODO.md) page.
+
+## Possible improvements
+
+- A way to run both integration tests and lambda code in the debugger at the same time
+- Add an authorize function on routes that modify data
 
 ## Credits
 
