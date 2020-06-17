@@ -52,6 +52,38 @@ describe('update', function() {
       });
   });
 
+  it('should handle the case where book is not found in the database', async function() {
+    // setup
+    const tableNameMock = chance.word();
+    const paramsMock = {
+      uuid: uuidv4()
+    };
+    const notFoundInDb = { code: 'ConditionalCheckFailedException' };
+    const updateResultMock = Promise.reject(notFoundInDb);
+    const promiseStub = sinon.stub().returns(updateResultMock);
+    const updateStub = sinon.stub().returns({
+      promise: promiseStub
+    });
+    awsSdkStub.DynamoDB = {
+      DocumentClient: function() {
+        return {
+          update: updateStub
+        };
+      }
+    };
+
+    // run
+    const promise = updateDbAdapterMock(tableNameMock, paramsMock.uuid, paramsMock);
+    
+    // test
+    return expect(promise).to.be.eventually.fulfilled
+      .then((value) => {
+        expect(value).to.be.equal(undefined);
+        expect(updateStub.calledOnce).to.be.true;
+        expect(promiseStub.calledOnce).to.be.true;
+      });
+  });
+
   it('should return an error', async function() {
     // setup
     const tableNameMock = chance.word();
