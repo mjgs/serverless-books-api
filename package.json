@@ -1,5 +1,5 @@
 {
-  "name": "y",
+  "name": "serverless-books-api",
   "version": "1.0.0",
   "description": "Implements a Books API for a Library, intended to be run on AWS using serverless",
   "main": "index.js",
