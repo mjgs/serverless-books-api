@@ -8,7 +8,7 @@
     "test": "test"
   },
   "dependencies": {
-    "aws-sdk": "^2.693.0",
+    "aws-sdk": "^2.814.0",
     "debug": "^4.1.1",
     "serverless": "^1.72.0",
     "serverless-pseudo-parameters": "^2.5.0",
